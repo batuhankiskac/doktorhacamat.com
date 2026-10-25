@@ -1,0 +1,68 @@
+.container {
+  composes: container from "../../../styles/page.module.css";
+  --page-max: 800px;
+}
+
+.heading {
+  composes: heading from "../../../styles/page.module.css";
+  --heading-size: 2.5rem;
+}
+
+.card {
+  background: var(--color-surface);
+  padding: 3rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+.map {
+  width: 100%;
+  height: min(400px, 60vh);
+  margin-bottom: 2rem;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.map iframe {
+  border: 0;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-light);
+  margin-bottom: 0.5rem;
+}
+
+.value {
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  font-weight: 500;
+  font-style: normal;
+}
+
+.hours {
+  color: var(--color-text);
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.social a {
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}

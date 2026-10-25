@@ -1,0 +1,509 @@
+/* Ana sayfa bölümleri. Düzen ve renkler eski statik sitenin styles.css
+   dosyasından alındı; renkler src/app/globals.css :root tokenlarından gelir. */
+
+/* Ortak bölüm düzeni */
+.section {
+  padding: 6rem 0;
+  /* Yapışkan başlık anchor hedeflerini örtmesin. */
+  scroll-margin-top: 6rem;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.header {
+  margin-bottom: 3.75rem;
+}
+
+.headerCentered {
+  text-align: center;
+}
+
+.title {
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  margin-bottom: 0.9rem;
+}
+
+.intro {
+  max-width: 720px;
+  margin: 0 auto 1.5rem;
+  color: var(--color-text-light);
+  font-size: 1.1rem;
+}
+
+.divider {
+  width: 60px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: var(--gold);
+}
+
+.headerCentered .divider {
+  margin: 0 auto;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+  min-height: 90dvh;
+  padding: 4rem 1.25rem;
+  text-align: center;
+  color: var(--color-surface);
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Beyaz ağırlıklı fotoğrafta beyaz metin için ≥4.5:1 zemin sağlar. */
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgb(10 53 64 / 90%) 0%,
+    rgb(15 76 92 / 78%) 100%
+  );
+}
+
+.heroContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+}
+
+.heroTitle {
+  margin-bottom: 1.25rem;
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--color-surface);
+}
+
+.heroTitle em {
+  font-style: italic;
+  color: var(--color-accent-light);
+}
+
+.heroSubtitle {
+  max-width: 680px;
+  margin-bottom: 2.5rem;
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: var(--color-surface);
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 14px 32px;
+  border: 2px solid var(--color-surface);
+  border-radius: 50px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-align: center;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.ctaPrimary {
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+  box-shadow: 0 4px 15px rgb(0 0 0 / 25%);
+}
+
+.ctaOutline {
+  background-color: transparent;
+  color: var(--color-surface);
+}
+
+.ctaPrimary:hover {
+  background-color: var(--color-bg-alt);
+  color: var(--color-primary);
+}
+
+.ctaOutline:hover {
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+}
+
+.heroContent a:focus-visible {
+  outline-color: var(--color-surface);
+}
+
+/* Hakkında */
+.aboutGrid {
+  display: grid;
+  gap: 3rem;
+}
+
+.aboutText p {
+  margin-bottom: 1.25rem;
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+}
+
+.featureList {
+  list-style: none;
+  margin-top: 1.875rem;
+}
+
+.featureList li {
+  margin-bottom: 0.9rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.featureIcon {
+  margin-right: 0.5rem;
+}
+
+.highlight {
+  padding: 2.5rem;
+  border-radius: var(--radius-md);
+  border-left: 5px solid var(--color-primary);
+  background-color: var(--color-bg-alt);
+}
+
+.highlightTitle {
+  margin-bottom: 0.9rem;
+  font-size: 1.5rem;
+}
+
+.highlight p {
+  color: var(--color-text);
+}
+
+/* Faydalar */
+.benefitsSection {
+  background-color: #fcfcfc;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 30px;
+}
+
+.benefitCard {
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem;
+  border-radius: var(--radius-md);
+  border-bottom: 3px solid transparent;
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-md);
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.benefitIcon {
+  margin-bottom: 1.25rem;
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.benefitTitle {
+  margin-bottom: 0.625rem;
+  font-size: 1.3rem;
+}
+
+.benefitText {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+}
+
+.readMore {
+  display: block;
+  margin-top: auto;
+  padding-top: 0.9375rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.benefitCard:hover {
+  border-bottom-color: var(--gold);
+}
+
+.benefitCard:hover .readMore {
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+
+/* Süreç (öncesi / sonrası) */
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: 30px;
+}
+
+.stepBox {
+  padding: 3rem;
+  border: 1px solid;
+  border-radius: var(--radius-md);
+}
+
+.stepBefore {
+  border-color: #ffe8cc;
+  background-color: #fff4e6; /* Hafif turuncu ton */
+}
+
+.stepAfter {
+  border-color: #bae7ff;
+  background-color: #e6f7ff; /* Hafif mavi ton */
+}
+
+.stepTitle {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: var(--color-text);
+}
+
+.stepList {
+  padding-left: 1.25rem;
+}
+
+.stepList li {
+  margin-bottom: 0.75rem;
+  color: var(--color-text);
+}
+
+/* Riskler */
+.risksSection {
+  background-color: var(--color-bg-alt);
+}
+
+.risksIntro {
+  max-width: 760px;
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+}
+
+.risksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
+  gap: 1.25rem;
+  list-style: none;
+}
+
+.riskCard {
+  display: flex;
+  gap: 0.875rem;
+  padding: 1.5rem;
+  border-left: 4px solid var(--color-danger);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.riskIcon {
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+.riskTitle {
+  margin-bottom: 0.375rem;
+  font-size: 1.05rem;
+  color: var(--color-text);
+}
+
+.riskText {
+  font-size: 0.95rem;
+  color: var(--color-text-light);
+}
+
+.risksNote {
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  border-left: 4px solid var(--gold);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+}
+
+/* İletişim */
+.contact {
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+.contactGrid {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+
+.contactTitle {
+  margin-bottom: 0.9rem;
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  color: var(--color-surface);
+}
+
+.contactSub {
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+  color: rgb(255 255 255 / 85%);
+}
+
+.infoItem {
+  margin-bottom: 1.875rem;
+}
+
+.infoLabel {
+  margin-bottom: 0.3rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.infoValue {
+  font-family: var(--font-playfair), serif;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.phone {
+  font-size: clamp(1.6rem, 4vw, 2rem);
+  font-weight: 700;
+  color: var(--color-surface);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.socialLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 1.25rem;
+}
+
+.socialButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border: 1px solid rgb(255 255 255 / 20%);
+  border-radius: 50px;
+  background-color: rgb(255 255 255 / 10%);
+  color: var(--color-surface);
+  font-weight: 500;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.socialButton:hover {
+  background-color: var(--color-surface);
+  color: var(--color-primary);
+}
+
+.socialIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* İkon renkleri yalnız dekoratif SVG'ye uygulanır; etiket metni beyaz kalır. */
+.socialButton.instagram:hover .socialIcon {
+  color: #e1306c;
+}
+
+.socialButton.youtube:hover .socialIcon {
+  color: #ff0000;
+}
+
+.map {
+  height: 400px;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 40px rgb(0 0 0 / 20%);
+}
+
+/* Geniş ekran: iki sütun. Dar ekran: tek sütun. */
+@media (min-width: 900px) {
+  .aboutGrid {
+    grid-template-columns: minmax(0, 1.5fr) minmax(min(300px, 100%), 1fr);
+    gap: 50px;
+    align-items: center;
+  }
+
+  .contactGrid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 4rem 0;
+  }
+
+  .header {
+    margin-bottom: 2.5rem;
+  }
+
+  .heroActions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .ctaButton {
+    width: 100%;
+  }
+
+  .highlight,
+  .stepBox {
+    padding: 1.75rem;
+  }
+
+  .benefitCard {
+    padding: 2rem;
+  }
+
+  .map {
+    height: 300px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .benefitCard:hover {
+    transform: translateY(-10px);
+  }
+
+  .ctaPrimary:hover,
+  .socialButton:hover {
+    transform: translateY(-2px);
+  }
+}

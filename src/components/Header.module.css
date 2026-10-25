@@ -1,0 +1,143 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9375rem 2rem;
+  background-color: rgb(var(--color-bg-rgb) / 95%);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Eski sitenin iki satırlı logosu: hekim adı ve altında site adı. */
+.logo {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.doctorName {
+  font-family: var(--font-playfair), serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.siteName {
+  color: var(--color-text-light);
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+}
+
+.nav {
+  display: flex;
+  gap: 1.875rem;
+  align-items: center;
+}
+
+.navLink {
+  color: var(--color-text);
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.navLink:hover {
+  color: var(--color-primary);
+}
+
+.navLink[aria-current="page"] {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.ctaButton {
+  composes: button primary from "../styles/button.module.css";
+  --btn-py: 0.625rem;
+  --btn-px: 1.5rem;
+  --btn-radius: 50px;
+  --btn-shadow: 0 4px 14px 0 rgb(var(--color-primary-rgb) / 25%);
+  font-size: 0.95rem;
+}
+
+.ctaButton[aria-current="page"] {
+  --btn-border-color: var(--color-primary-dark);
+  background-color: var(--color-primary-dark);
+}
+
+@media (max-width: 1024px) {
+  .header {
+    backdrop-filter: none;
+    background-color: var(--color-bg);
+  }
+
+  .nav {
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    height: 100dvh;
+    background-color: var(--color-surface);
+    z-index: 110;
+    flex-direction: column;
+    padding: 6rem 2rem 2rem 2rem;
+    gap: 2rem;
+    overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .nav.open {
+    transform: translateX(0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    position: relative;
+    z-index: 120;
+  }
+
+  .hamburger span {
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-primary);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  /* Hamburger Animation when open */
+  .hamburger.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 6px);
+  }
+
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -6px);
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 1rem 1.25rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .hamburger {
+    display: none;
+  }
+}

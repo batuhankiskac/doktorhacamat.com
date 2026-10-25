@@ -1,0 +1,16 @@
+.container {
+  composes: container from "../../../styles/page.module.css";
+  --page-max: 1000px;
+}
+
+.heading {
+  composes: heading from "../../../styles/page.module.css";
+}
+
+.intro {
+  max-width: 42rem;
+  margin: -1rem auto 2.5rem;
+  color: var(--color-text-light);
+  text-align: center;
+  line-height: 1.7;
+}

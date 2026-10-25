@@ -1,0 +1,322 @@
+{
+  "brand": {
+    "siteName": "Hacamat Merkezi",
+    "domain": "doktorhacamat.com",
+    "shortDescription": "Prof. Dr. Muharrem Kıskaç gözetiminde, hijyenik koşullarda hacamat uygulaması. Geleneksel yöntem, modern tıbbi yaklaşım.",
+    "doctorName": "Prof. Dr. Muharrem Kıskaç",
+    "doctorTitle": "Hacamat Merkezi"
+  },
+  "contact": {
+    "address": "Zuhuratbaba, Haksever Sk. Paşa İş Merkezi No:2 Daire:14, 34147 Bakırköy/İstanbul",
+    "addressParts": {
+      "streetAddress": "Zuhuratbaba, Haksever Sk. Paşa İş Merkezi No:2 Daire:14",
+      "addressLocality": "Bakırköy",
+      "addressRegion": "İstanbul",
+      "postalCode": "34147",
+      "addressCountry": "TR"
+    },
+    "phone": "0 532 219 33 64",
+    "tel": "+905322193364",
+    "whatsapp": "905322193364",
+    "email": null,
+    "social": {
+      "instagram": "https://www.instagram.com/profdrmuharremkiskac/",
+      "youtube": "https://www.youtube.com/@profdrmuharremkiskac"
+    },
+    "mapEmbedUrl": "https://maps.google.com/maps?q=Zuhuratbaba,+Haksever+Sk.+Paşa+iş+merkezi+No:2+Daire:14,+34147+Bakırköy/İstanbul&t=&z=15&ie=UTF8&iwloc=&output=embed",
+    "mapsLink": "https://www.google.com/maps/search/?api=1&query=Zuhuratbaba%2C+Haksever+Sk.+Pa%C5%9Fa+%C4%B0%C5%9F+Merkezi+No%3A2+Daire%3A14%2C+34147+Bak%C4%B1rk%C3%B6y%2F%C4%B0stanbul",
+    "workingHours": "Pazartesi - Cumartesi: 09:00 - 18:00"
+  },
+  "seo": {
+    "home": {
+      "title": "Hacamat Merkezi | Prof. Dr. Muharrem Kıskaç",
+      "description": "Prof. Dr. Muharrem Kıskaç gözetiminde, hijyenik koşullarda hacamat uygulaması. Geleneksel yöntem, modern tıbbi yaklaşım."
+    },
+    "articlesIndex": {
+      "title": "Hacamatın Faydaları",
+      "description": "Hacamatın öne sürülen etkileri ve bu konudaki çalışmalar hakkında bilgiler. Bilgilendirme amaçlıdır; hekim değerlendirmesinin yerini tutmaz."
+    },
+    "about": {
+      "title": "Hacamat Nedir?",
+      "description": "Kupa terapisi olarak da bilinen hacamat hakkında genel bilgi: geleneksel bir yöntem olan hacamatın uygulanışı ve öne sürülen etkileri."
+    },
+    "contact": {
+      "title": "İletişim & Randevu",
+      "description": "Hacamat Merkezi adres, telefon ve çalışma saatleri. Detaylı bilgi ve randevu için bize ulaşın."
+    }
+  },
+  "navigation": [
+    {
+      "href": "/#nedir",
+      "label": "Hacamat Nedir?"
+    },
+    {
+      "href": "/#faydalar",
+      "label": "Faydaları"
+    },
+    {
+      "href": "/#oncessonrasi",
+      "label": "Öncesi & Sonrası"
+    },
+    {
+      "href": "/iletisim",
+      "label": "İletişim"
+    }
+  ],
+  "home": {
+    "sections": [
+      {
+        "id": "hero",
+        "kind": "hero",
+        "title": "Geleneksel Yöntem Modern Yaklaşımla Buluşuyor",
+        "titleEmphasis": "Modern Yaklaşımla",
+        "subtitle": "Prof. Dr. Muharrem Kıskaç uzmanlığında, steril klinik ortamında hacamat tedavisi ile sağlığınıza doğal bir dokunuş yapın.",
+        "ctas": [
+          {
+            "label": "Randevu Bilgisi Alın",
+            "href": "/iletisim"
+          },
+          {
+            "label": "Tedaviyi Keşfedin",
+            "href": "/#nedir"
+          }
+        ]
+      },
+      {
+        "id": "nedir",
+        "kind": "text",
+        "title": "Hacamat Nedir?",
+        "paragraphs": [
+          "Hacamat (Kupa Terapisi), binlerce yıllık bir geçmişi olan, cilt üzerine yerleştirilen kupalarla vakum uygulanan geleneksel bir yöntemdir. Kan dolaşımını uyarmak ve vücudun doğal dengesini desteklemek amacıyla uygulanmaktadır. Vücuttan toksinlerin (ağır metaller, serbest radikaller) uzaklaştırılmasına katkı sağladığı öne sürülse de bu konudaki bilimsel veriler sınırlıdır ve araştırılmaktadır.",
+          "Modern tıbbi yaklaşımla, hijyenik koşullarda ve uzman hekim kontrolünde uygulandığında, bağışıklık sistemi üzerindeki olası etkilerinin araştırıldığı bir yöntem olarak değerlendirilmektedir."
+        ],
+        "items": [
+          {
+            "icon": "✅",
+            "title": "Steril ve Tek Kullanımlık Malzemeler",
+            "text": ""
+          },
+          {
+            "icon": "✅",
+            "title": "Uzman Hekim Kontrolü",
+            "text": ""
+          },
+          {
+            "icon": "✅",
+            "title": "Hasta Konforuna Önem Veren Uygulama",
+            "text": ""
+          }
+        ]
+      },
+      {
+        "id": "neden-hacamat",
+        "kind": "text",
+        "title": "Neden Hacamat?",
+        "paragraphs": [
+          "Vücutta biriken maddelerin zamanla yorgunluk ve ağrı hissine katkıda bulunabileceği öne sürülmektedir. Hacamat, bazı kişiler tarafından bu şikâyetleri hafifletmeye yönelik tamamlayıcı bir yaklaşım olarak tercih edilmektedir. Ancak etkileri hakkında kesin bilgi için hekim değerlendirmesi gerekir."
+        ]
+      },
+      {
+        "id": "faydalar",
+        "kind": "cards",
+        "title": "Hacamatın Öne Sürülen Faydaları",
+        "subtitle": "Hacamat ile ilgili öne sürülen etkiler üzerine çalışmalar sürmektedir. Aşağıdaki başlıklardan her bir konunun ayrıntılarına ulaşabilirsiniz.",
+        "items": [
+          {
+            "icon": "🩸",
+            "title": "Detoks Etkisi",
+            "text": "Vücuttan atılan maddeler ve ağır metaller üzerine öne sürülen görüşler ve bu konudaki çalışmalar.",
+            "href": "/faydalar/detoks",
+            "linkLabel": "Detayları Okuyun →"
+          },
+          {
+            "icon": "🛡️",
+            "title": "Bağışıklık Sistemi",
+            "text": "Bağışıklık hücreleri üzerindeki olası etkileri araştırılan bir konudur.",
+            "href": "/faydalar/bagisiklik",
+            "linkLabel": "Detayları Okuyun →"
+          },
+          {
+            "icon": "⚡",
+            "title": "Enerji ve Zindelik",
+            "text": "Yorgunluk hissi ve genel zindelik üzerine öne sürülen olası etkiler.",
+            "href": "/faydalar/enerji",
+            "linkLabel": "Detayları Okuyun →"
+          },
+          {
+            "icon": "💆",
+            "title": "Ağrı Yönetimi",
+            "text": "Migren, bel ağrısı ve fibromiyalji gibi kronik ağrılarda destekleyici olabileceği bildirilen etkiler.",
+            "href": "/faydalar/agri",
+            "linkLabel": "Detayları Okuyun →"
+          },
+          {
+            "icon": "💓",
+            "title": "Kan Dolaşımı",
+            "text": "Kan dolaşımı üzerine öne sürülen etkiler ve bu konudaki çalışmalar.",
+            "href": "/faydalar/enerji",
+            "linkLabel": "Detayları Okuyun →"
+          },
+          {
+            "icon": "🧠",
+            "title": "Stres ve Rahatlama",
+            "text": "Rahatlama hissi ile stres ve anksiyete üzerine olası etkiler.",
+            "href": "/faydalar/stres",
+            "linkLabel": "Detayları Okuyun →"
+          }
+        ]
+      },
+      {
+        "id": "oncessonrasi",
+        "kind": "steps",
+        "title": "Tedavi Süreci",
+        "items": [
+          {
+            "icon": "⚠️",
+            "title": "Hacamat Öncesi",
+            "text": "- Hacamattan en az 3 saat önce yeme içme kesilmesi önerilir (su hariç).\n- Uygulamadan önceki 24 saat içinde hayvansal gıdaların (et, süt, yoğurt, yumurta) tüketilmemesi önerilir; bu konuda hekiminize danışınız.\n- Kan sulandırıcı ilaç kullanıyorsanız hekiminize bilgi veriniz.\n- Aşırı yorgunluk ve uykusuzluktan kaçınılmalıdır."
+          },
+          {
+            "icon": "✨",
+            "title": "Hacamat Sonrası",
+            "text": "- İşlemden sonra en az 2 saat yemek yenmemesi önerilir.\n- O gün ağır ve yağlı hayvansal gıdalardan kaçınılması önerilir.\n- Bol su tüketilmesi önerilir.\n- Uygulama bölgesinde enfeksiyon riski açısından 12-24 saat duş alınmaması önemlidir.\n- Ağır fiziksel aktivitelerden ve aşırı soğuktan korunulması önerilir."
+          }
+        ]
+      },
+      {
+        "id": "riskler",
+        "kind": "list",
+        "title": "Kimler yaptırmamalı? / Riskler",
+        "paragraphs": [
+          "Aşağıdaki durumlarda hacamat uygulanması uygun olmayabilir ya da ancak hekim değerlendirmesiyle düşünülmelidir:"
+        ],
+        "items": [
+          {
+            "icon": "🚫",
+            "title": "Gebelik",
+            "text": "Gebelik döneminde uygulanması uygun olmayabilir."
+          },
+          {
+            "icon": "🚫",
+            "title": "Kanama bozukluğu veya kan sulandırıcı (antikoagülan) ilaç kullanımı",
+            "text": "Kanama riskini artırabileceği için hekim değerlendirmesi gerekir."
+          },
+          {
+            "icon": "🚫",
+            "title": "Ağır anemi (kansızlık)",
+            "text": "Kansızlık durumunda uygun olmayabilir."
+          },
+          {
+            "icon": "🚫",
+            "title": "Kontrolsüz diyabet",
+            "text": "Diyabetin dengede olmadığı durumlarda uygun olmayabilir."
+          },
+          {
+            "icon": "🚫",
+            "title": "Uygulama bölgesinde cilt enfeksiyonu veya yara",
+            "text": "Bu bölgelerde uygulanmamalıdır."
+          },
+          {
+            "icon": "🚫",
+            "title": "Kalp pili kullanımı veya ciddi kalp hastalığı",
+            "text": "Kardiyak durumlarda hekim değerlendirmesi gerekir."
+          },
+          {
+            "icon": "🚫",
+            "title": "Aktif enfeksiyon veya ateş",
+            "text": "Ateşli veya enfeksiyonlu dönemde uygulanmaması önerilir."
+          }
+        ],
+        "note": "Olası yan etkiler: morarma (ekimoz), baş dönmesi, enfeksiyon ve iz (skar) oluşumu. Uygulama öncesi hekim değerlendirmesi gerekir."
+      },
+      {
+        "id": "iletisim",
+        "kind": "contact",
+        "title": "İletişim & Randevu",
+        "subtitle": "Sağlığınız için ilk adımı atın. Detaylı bilgi ve randevu için bize ulaşın.",
+        "items": [
+          {
+            "title": "Telefon / WhatsApp",
+            "text": "0 532 219 33 64",
+            "href": "tel:+905322193364"
+          },
+          {
+            "title": "Adres",
+            "text": "Zuhuratbaba, Haksever Sk. Paşa İş Merkezi No:2 Daire:14, 34147 Bakırköy/İstanbul"
+          },
+          {
+            "title": "Çalışma Saatleri",
+            "text": "Pazartesi - Cumartesi: 09:00 - 18:00"
+          }
+        ],
+        "social": [
+          {
+            "label": "Instagram",
+            "href": "https://www.instagram.com/profdrmuharremkiskac/"
+          },
+          {
+            "label": "YouTube",
+            "href": "https://www.youtube.com/@profdrmuharremkiskac"
+          }
+        ],
+        "map": "https://maps.google.com/maps?q=Zuhuratbaba,+Haksever+Sk.+Paşa+iş+merkezi+No:2+Daire:14,+34147+Bakırköy/İstanbul&t=&z=15&ie=UTF8&iwloc=&output=embed"
+      }
+    ]
+  },
+  "redirects": [
+    {
+      "source": "/faydalar/agri.html",
+      "destination": "/faydalar/agri"
+    },
+    {
+      "source": "/faydalar/bagisiklik.html",
+      "destination": "/faydalar/bagisiklik"
+    },
+    {
+      "source": "/faydalar/detoks.html",
+      "destination": "/faydalar/detoks"
+    },
+    {
+      "source": "/faydalar/enerji.html",
+      "destination": "/faydalar/enerji"
+    },
+    {
+      "source": "/faydalar/stres.html",
+      "destination": "/faydalar/stres"
+    },
+    {
+      "source": "/index.html",
+      "destination": "/"
+    }
+  ],
+  "footer": {
+    "text": "© 2024 Prof. Dr. Muharrem Kıskaç. Tüm Hakları Saklıdır.",
+    "copyrightOwner": "Prof. Dr. Muharrem Kıskaç",
+    "links": [
+      {
+        "label": "Hakkında",
+        "href": "/#nedir"
+      },
+      {
+        "label": "İletişim",
+        "href": "/iletisim"
+      },
+      {
+        "label": "Instagram",
+        "href": "https://www.instagram.com/profdrmuharremkiskac/"
+      },
+      {
+        "label": "YouTube",
+        "href": "https://www.youtube.com/@profdrmuharremkiskac"
+      }
+    ]
+  },
+  "images": [
+    {
+      "file": "hacamat_hero_image.png",
+      "usedIn": "hero",
+      "alt": "Hacamat tedavisini temsil eden ana sayfa görseli",
+      "note": "Dosya uzantısı .png, ancak içeriği JPEG (1024x1024). Görsel okunamadı; alt metni eski metne (“Hacamat Tedavisi”) dayanarak yazıldı. Yeniden kaydedilmesi/doğrulanması önerilir."
+    }
+  ]
+}

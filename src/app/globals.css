@@ -1,0 +1,101 @@
+:root {
+  /* Eski statik sitenin (styles.css) renk paleti. Değişken adları,
+     mevcut bileşenlerin kullandığı adlarla aynı tutuldu. */
+  --color-primary: #0F4C5C; /* Derin teal: başlıklar ve butonlar */
+  --color-primary-dark: #0A3540; /* Hover ve koyu zeminler */
+  --color-secondary: #7D6F7C; /* Muted mor-gri; metinde 4.5:1 için koyulaştırıldı */
+  --color-accent: #E0B1CB; /* Yumuşak pembe vurgu (dekoratif) */
+  --color-accent-light: #F6DDEB; /* Koyu zeminde metin vurgusu (≥4.5:1) */
+  --gold: #C9A227; /* Ayırıcı çizgiler ve kenarlıklar (dekoratif) */
+  --gold-light: #E6C86A; /* Koyu teal üzerinde etiket metni (≥4.5:1) */
+  --color-bg: #FFFFFF;
+  --color-surface: #FFFFFF;
+  --color-bg-alt: #F8F9FA;
+  --color-text: #2B2D42;
+  --color-text-light: #5F666D; /* Beyaz ve #F8F9FA üzerinde ≥4.5:1 */
+  --color-primary-rgb: 15 76 92;
+  --color-bg-rgb: 255 255 255;
+  --color-primary-border: rgb(var(--color-primary-rgb) / 20%);
+  --color-danger: #b42318;
+  --color-border: rgb(0 0 0 / 10%);
+  --color-input-border: #767C85; /* ≥3:1 on white (form kontrolleri) */
+  --shadow-button: 0 4px 15px 0 rgb(15 76 92 / 30%);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+
+  --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05);
+  --shadow-md: 0 10px 30px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  max-width: 100%;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-family: var(--font-outfit), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-playfair), serif;
+  color: var(--color-primary);
+  line-height: 1.25;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-secondary);
+  outline-offset: 3px;
+}
+
+/* Yalnız ekran okuyucuya okunan ama görsel olarak gizli metin. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
