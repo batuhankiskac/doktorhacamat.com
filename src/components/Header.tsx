@@ -2,15 +2,19 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import site from "@/data/site.json";
 import { contactHref, isActivePath, navigationLinks } from "@/data/navigation";
 import styles from "./Header.module.css";
+
+// Masaüstü genişlik. Header.module.css içindeki 1024px mobil kuralıyla birlikte değişmeli.
+const DESKTOP_MEDIA_QUERY = "(min-width: 1025px)";
 
 export default function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [menuPathname, setMenuPathname] = useState(pathname);
+  const headerRef = useRef<HTMLElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   // Sayfa değiştiğinde menü kapanır (render sırasında durum ayarlama).
@@ -23,26 +27,24 @@ export default function Header() {
     setIsMenuOpen((open) => !open);
   };
 
-  const closeMenu = () => {
+  const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
-  };
-
-  const headerRef = useRef<HTMLElement>(null);
+  }, []);
 
   useEffect(() => {
     if (!isMenuOpen) return;
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsMenuOpen(false);
+        closeMenu();
         buttonRef.current?.focus();
       }
     };
 
     // Masaüstü genişliğe geçilirse menü kapanır; kaydırma kilidi takılı kalmaz.
-    const desktopQuery = window.matchMedia("(min-width: 1025px)");
+    const desktopQuery = window.matchMedia(DESKTOP_MEDIA_QUERY);
     const handleViewportChange = (event: MediaQueryListEvent) => {
-      if (event.matches) setIsMenuOpen(false);
+      if (event.matches) closeMenu();
     };
 
     // Menü açıkken odak header içinde kalsın diye kardeş öğeler etkisizleştirilir.
@@ -70,11 +72,16 @@ export default function Header() {
         sibling.inert = false;
       });
     };
-  }, [isMenuOpen]);
+  }, [isMenuOpen, closeMenu]);
 
   return (
     <header ref={headerRef} className={styles.header}>
-      <Link href="/" className={styles.logo} onClick={closeMenu}>
+      <Link
+        href="/"
+        className={styles.logo}
+        prefetch={false}
+        onClick={closeMenu}
+      >
         <span className={styles.doctorName}>{site.brand.doctorName}</span>
         <span className={styles.siteName}>{site.brand.siteName}</span>
       </Link>
@@ -98,6 +105,7 @@ export default function Header() {
         aria-label="Ana menü"
         className={`${styles.nav} ${isMenuOpen ? styles.open : ""}`}
       >
+        {/* Header CTA'sı (İletişim) logo ve alt bilgiyle aynı rotayı tekrarlar; prefetch kapalı. */}
         {navigationLinks.map((link) => (
           <Link
             key={link.href}
@@ -105,6 +113,7 @@ export default function Header() {
             className={
               link.href === contactHref ? styles.ctaButton : styles.navLink
             }
+            prefetch={link.href === contactHref ? false : undefined}
             aria-current={isActivePath(pathname, link.href) ? "page" : undefined}
             onClick={closeMenu}
           >

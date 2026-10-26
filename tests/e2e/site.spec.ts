@@ -34,10 +34,13 @@ test("public içerik sayfaları yükleniyor metnine bağımlı değil", async ({
 test("kaldırılan rotalar 404 döner ve eski html adresleri ana sayfaya yönlenir", async ({
   request,
 }) => {
-  for (const path of ["/hizmetler", "/hakkinda", "/makaleler"]) {
+  for (const path of ["/hizmetler", "/hakkinda"]) {
     const response = await request.get(path);
     expect(response.status(), path).toBe(404);
   }
+  const articles = await request.get("/makaleler", { maxRedirects: 0 });
+  expect(articles.status()).toBe(308);
+  expect(articles.headers().location).toBe("/faydalar");
   const redirect = await request.get("/index.html", { maxRedirects: 0 });
   expect(redirect.status()).toBeGreaterThanOrEqual(300);
   expect(redirect.status()).toBeLessThan(400);

@@ -16,7 +16,9 @@
   --color-primary-rgb: 15 76 92;
   --color-bg-rgb: 255 255 255;
   --color-primary-border: rgb(var(--color-primary-rgb) / 20%);
+  --color-primary-subtle-bg: #E8F1F3; /* Teal'ın açık tonu (ikincil buton zemini) */
   --color-danger: #b42318;
+  --color-danger-bg: #fef3f2;
   --color-border: rgb(0 0 0 / 10%);
   --color-input-border: #767C85; /* ≥3:1 on white (form kontrolleri) */
   --shadow-button: 0 4px 15px 0 rgb(15 76 92 / 30%);

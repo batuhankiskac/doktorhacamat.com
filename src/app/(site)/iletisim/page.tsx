@@ -1,4 +1,5 @@
 import ContactActions from "@/components/ContactActions";
+import ExternalLink from "@/components/ExternalLink";
 import MapEmbed from "@/components/MapEmbed";
 import contactData from "@/data/contact.json";
 import site from "@/data/site.json";
@@ -26,14 +27,9 @@ export default function ContactPage() {
           <h2 className={styles.label}>Adres</h2>
           <address className={styles.value}>{contactData.address}</address>
           <p>
-            <a
-              href={contactData.mapsLink}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <ExternalLink href={contactData.mapsLink}>
               Google Haritalar&apos;da aç
-              <span className="sr-only"> (yeni sekmede açılır)</span>
-            </a>
+            </ExternalLink>
           </p>
         </section>
         <section className={styles.section}>
@@ -47,22 +43,12 @@ export default function ContactPage() {
         <section className={styles.section}>
           <h2 className={styles.label}>Sosyal Medya</h2>
           <div className={styles.social}>
-            <a
-              href={contactData.social.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <ExternalLink href={contactData.social.instagram}>
               Instagram
-              <span className="sr-only"> (yeni sekmede açılır)</span>
-            </a>
-            <a
-              href={contactData.social.youtube}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            </ExternalLink>
+            <ExternalLink href={contactData.social.youtube}>
               YouTube
-              <span className="sr-only"> (yeni sekmede açılır)</span>
-            </a>
+            </ExternalLink>
           </div>
         </section>
       </div>

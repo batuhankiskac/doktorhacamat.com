@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ConsentPreferencesButton from "./ConsentPreferencesButton";
+import ExternalLink from "./ExternalLink";
 import site from "@/data/site.json";
 import { privacyLink } from "@/data/navigation";
 import styles from "./Footer.module.css";
@@ -25,22 +26,18 @@ export default function Footer() {
         <nav className={styles.links} aria-label="Alt menü">
           {site.footer.links.map((link) =>
             EXTERNAL_LINK.test(link.href) ? (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <ExternalLink key={link.href} href={link.href}>
                 {link.label}
-                <span className="sr-only"> (yeni sekmede açılır)</span>
-              </a>
+              </ExternalLink>
             ) : (
-              <Link key={link.href} href={link.href}>
+              <Link key={link.href} href={link.href} prefetch={false}>
                 {link.label}
               </Link>
             ),
           )}
-          <Link href={privacyLink.href}>{privacyLink.label}</Link>
+          <Link href={privacyLink.href} prefetch={false}>
+            {privacyLink.label}
+          </Link>
           <ConsentPreferencesButton />
         </nav>
       </div>

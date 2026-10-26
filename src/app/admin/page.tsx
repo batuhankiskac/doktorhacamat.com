@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
+import { ADMIN_HOME } from "@/data/navigation";
 
 export default function AdminDashboard() {
-  redirect("/admin/makaleler");
+  redirect(ADMIN_HOME);
 }

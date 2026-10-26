@@ -1,3 +1,4 @@
+import ExternalLink from "@/components/ExternalLink";
 import MapEmbed from "@/components/MapEmbed";
 import type { HomeContactSection } from "./types";
 import styles from "./home.module.css";
@@ -76,19 +77,14 @@ export default function HomeContact({
               {section.social.map((link) => {
                 const network = link.label.toLowerCase();
                 return (
-                  <a
+                  <ExternalLink
                     key={link.href}
                     href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className={`${styles.socialButton} ${styles[network] ?? ""}`}
                   >
                     <SocialIcon network={network} />
-                    <span>
-                      {link.label}
-                      <span className="sr-only"> (yeni sekmede açılır)</span>
-                    </span>
-                  </a>
+                    <span>{link.label}</span>
+                  </ExternalLink>
                 );
               })}
             </div>

@@ -68,6 +68,7 @@
   background-color: var(--color-primary-dark);
 }
 
+/* Mobil menü kırılımı; Header.tsx içindeki DESKTOP_MEDIA_QUERY (1025px) ile eşleşmeli. */
 @media (max-width: 1024px) {
   .header {
     backdrop-filter: none;
