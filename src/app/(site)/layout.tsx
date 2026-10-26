@@ -34,8 +34,10 @@ const clinicSchema = {
   },
   employee: [
     {
-      "@type": "Physician",
+      // employee kişi bekler; Physician schema.org'da kurum türüdür.
+      "@type": "Person",
       name: bioData.name,
+      jobTitle: "İç Hastalıkları Uzmanı",
       url: SITE_URL,
     },
   ],

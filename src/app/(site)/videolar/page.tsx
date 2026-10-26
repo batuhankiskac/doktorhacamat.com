@@ -8,7 +8,7 @@ import styles from "./page.module.css";
 
 export const metadata = pageMetadata({
   title: "Videolar",
-  description: "Sağlıklı yaşam rehberi videoları.",
+  description: "Hacamat uygulaması, hazırlığı ve faydaları üzerine Prof. Dr. Muharrem Kıskaç'ın videoları.",
   path: "/videolar",
 });
 

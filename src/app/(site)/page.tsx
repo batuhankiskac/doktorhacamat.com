@@ -1,3 +1,5 @@
+import { getArticles } from "@/lib/content";
+import { resolveContentHref } from "@/lib/home-links";
 import { pageMetadata } from "@/lib/metadata";
 import siteData from "@/data/site.json";
 import HomeAbout from "@/components/home/HomeAbout";
@@ -29,11 +31,19 @@ function getSection<K extends HomeSection["kind"]>(id: string, kind: K) {
 const heroImageAlt =
   siteData.images.find((image) => image.usedIn === "hero")?.alt ?? "";
 
-export default function Home() {
+export default async function Home() {
+  const articleIds = new Set((await getArticles()).map((article) => article.id));
   const hero = getSection("hero", "hero");
   const about = getSection("nedir", "text");
   const reason = getSection("neden-hacamat", "text");
-  const benefits = getSection("faydalar", "cards");
+  const benefitSection = getSection("faydalar", "cards");
+  const benefits = benefitSection && {
+    ...benefitSection,
+    items: benefitSection.items?.map((item) => ({
+      ...item,
+      href: resolveContentHref(item.href, "/faydalar", articleIds),
+    })),
+  };
   const steps = getSection("oncessonrasi", "steps");
   const risks = getSection("riskler", "list");
   const contact = getSection("iletisim", "contact");
