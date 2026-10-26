@@ -1,38 +1,84 @@
+/* Doktor Hacamat — "Toprak ve okra": sıcak kum zemin, koyu kan kırmızısı
+   (oxblood) birincil renk, okra vurgu. Başlıklar Fraunces, metin Manrope. */
 :root {
-  /* Eski statik sitenin (styles.css) renk paleti. Değişken adları,
-     mevcut bileşenlerin kullandığı adlarla aynı tutuldu. */
-  --color-primary: #0F4C5C; /* Derin teal: başlıklar ve butonlar */
-  --color-primary-dark: #0A3540; /* Hover ve koyu zeminler */
-  --color-secondary: #7D6F7C; /* Muted mor-gri; metinde 4.5:1 için koyulaştırıldı */
-  --color-accent: #E0B1CB; /* Yumuşak pembe vurgu (dekoratif) */
-  --color-accent-light: #F6DDEB; /* Koyu zeminde metin vurgusu (≥4.5:1) */
-  --gold: #C9A227; /* Ayırıcı çizgiler ve kenarlıklar (dekoratif) */
-  --gold-light: #E6C86A; /* Koyu teal üzerinde etiket metni (≥4.5:1) */
-  --color-bg: #FFFFFF;
-  --color-surface: #FFFFFF;
-  --color-bg-alt: #F8F9FA;
-  --color-text: #2B2D42;
-  --color-text-light: #5F666D; /* Beyaz ve #F8F9FA üzerinde ≥4.5:1 */
-  --color-primary-rgb: 15 76 92;
-  --color-bg-rgb: 255 255 255;
-  --color-primary-border: rgb(var(--color-primary-rgb) / 20%);
-  --color-primary-subtle-bg: #E8F1F3; /* Teal'ın açık tonu (ikincil buton zemini) */
-  --color-danger: #b42318;
-  --color-danger-bg: #fef3f2;
-  --color-border: rgb(0 0 0 / 10%);
-  --color-input-border: #767C85; /* ≥3:1 on white (form kontrolleri) */
-  --shadow-button: 0 4px 15px 0 rgb(15 76 92 / 30%);
+  --color-bg: #F7F1E9;
+  --color-bg-rgb: 247 241 233;
+  --color-bg-alt: #EFE4D5;
+  --color-surface: #FFFDFA;
+  --color-text: #2A1C17;
+  --color-ink-rgb: 42 28 23;
+  --color-heading: #2A1C17;
+  --color-text-light: #67574F;
+  --color-muted: #67574F;
+  --color-line: rgb(42 28 23 / 12%);
+  --color-line-strong: rgb(42 28 23 / 28%);
 
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 24px;
+  --color-primary: #7A2E23;
+  --color-primary-rgb: 122 46 35;
+  --color-primary-dark: #5B1F18;
+  --color-primary-subtle-bg: #F2E1DA;
+  --color-on-primary: #FBF4EC;
+  --color-secondary: #9A5A1F;
+  --color-accent: #B9822F;
+  --color-accent-ink: #8C4F1C;
+  --color-accent-soft: #F0DCC3;
+  --color-accent-on-dark: #E8C38F;
+  --color-accent-light: #F0DCC3;
+  --color-selection: #F0DCC3;
+  --gold: #B9822F;
+  --gold-light: #E8C38F;
 
-  --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.05);
-  --shadow-md: 0 10px 30px rgb(0 0 0 / 0.05);
-  --shadow-lg: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+  --color-dark: #2A1C17;
+  --color-on-dark: #F6EDE3;
+  --color-on-dark-muted: rgb(246 237 227 / 72%);
+
+  --color-input-border: #8E7F77;
+  --heading-weight: 400;
+  --heading-tracking: -0.01em;
+  --display-tracking: -0.03em;
 }
 
-* {
+:root {
+  /* Ortak ölçüler: tipografi ölçeği, boşluklar ve hareket. */
+  --step--1: 0.875rem;
+  --step-0: 1.0625rem;
+  --step-1: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --step-2: clamp(1.375rem, 1.2rem + 0.75vw, 1.75rem);
+  --step-3: clamp(1.75rem, 1.4rem + 1.5vw, 2.625rem);
+  --step-4: clamp(2.25rem, 1.6rem + 2.9vw, 4rem);
+  --step-5: clamp(2.75rem, 1.7rem + 5vw, 6rem);
+
+  --container: 1240px;
+  --container-narrow: 760px;
+  --gutter: clamp(1.25rem, 4vw, 3rem);
+  --section-y: clamp(4.5rem, 9vw, 8.5rem);
+  --header-h: 76px;
+
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  --color-border: var(--color-line);
+  --color-primary-border: rgb(var(--color-primary-rgb) / 22%);
+  --color-danger: #b42318;
+  --color-danger-bg: #fef3f2;
+
+  --shadow-sm: 0 1px 2px rgb(var(--color-ink-rgb) / 5%);
+  --shadow-md: 0 1px 2px rgb(var(--color-ink-rgb) / 4%), 0 10px 28px -12px rgb(var(--color-ink-rgb) / 16%);
+  --shadow-lg: 0 1px 2px rgb(var(--color-ink-rgb) / 4%), 0 24px 48px -20px rgb(var(--color-ink-rgb) / 24%);
+  --shadow-button: 0 10px 24px -12px rgb(var(--color-primary-rgb) / 60%);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 200ms;
+  --dur-base: 450ms;
+  --dur-reveal: 1000ms;
+}
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -40,15 +86,33 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 1rem);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
+  /* Eski modüller hâlâ bu adları kullanabilir. */
+  --font-playfair: var(--font-display);
+  --font-outfit: var(--font-body);
+
   max-width: 100%;
+  min-height: 100dvh;
+  overflow-x: clip;
   color: var(--color-text);
   background: var(--color-bg);
-  font-family: var(--font-outfit), sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
 }
 
 a {
@@ -60,18 +124,37 @@ button,
 input,
 textarea,
 select {
-  font-family: inherit;
+  font: inherit;
+  color: inherit;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-playfair), serif;
-  color: var(--color-primary);
-  line-height: 1.25;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: var(--heading-weight, 500);
+  color: var(--color-heading);
+  line-height: 1.12;
+  letter-spacing: var(--heading-tracking, -0.02em);
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: var(--color-selection);
+  color: var(--color-text);
 }
 
 :focus-visible {
-  outline: 3px solid var(--color-secondary);
+  outline: 2px solid var(--color-secondary);
   outline-offset: 3px;
+  border-radius: 4px;
 }
 
 /* Yalnız ekran okuyucuya okunan ama görsel olarak gizli metin. */
@@ -87,6 +170,88 @@ h1, h2, h3, h4, h5, h6 {
   border: 0;
 }
 
+/* ---------- Hareket ----------
+   [data-enter]: sayfa yüklenince oynayan giriş animasyonu.
+   [data-reveal]: öğe ekrana girerken kaydırmaya bağlı açılır (scroll-driven
+   animation; JS yok). Desteklemeyen tarayıcıda içerik doğrudan görünür.
+   Sıralı gecikme için öğeye style={{ "--i": n }} verilir. */
+[data-enter] {
+  animation: enter-rise var(--dur-reveal) var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 110ms + 80ms);
+}
+
+[data-enter="fade"] {
+  animation-name: enter-fade;
+}
+
+[data-enter="mask"] {
+  animation: enter-mask 1400ms var(--ease-out) both;
+  animation-delay: calc(var(--i, 0) * 110ms);
+}
+
+@supports (animation-timeline: view()) {
+  [data-reveal] {
+    animation: enter-rise var(--ease-out) both;
+    animation-timeline: view();
+    animation-range: entry calc(var(--i, 0) * 6%) entry calc(80% + var(--i, 0) * 10%);
+  }
+
+  [data-reveal="fade"] {
+    animation-name: enter-fade;
+  }
+
+  [data-reveal="scale"] {
+    animation-name: reveal-scale;
+  }
+
+  [data-reveal="mask"] {
+    animation-name: enter-mask;
+    animation-range: entry 0% cover 45%;
+  }
+}
+
+@keyframes enter-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 32px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes enter-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes enter-mask {
+  from {
+    clip-path: inset(100% 0 0 0);
+    transform: scale(1.06);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -97,7 +262,6 @@ h1, h2, h3, h4, h5, h6 {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
+    animation: none !important;
   }
 }

@@ -17,16 +17,23 @@ export const metadata = pageMetadata({
 
 export default function ArticlesPage() {
   return (
-    <main id="main-content" className={styles.container}>
-      <h1 className={styles.heading}>Hacamat ile İlgili Bilgiler</h1>
-      <p className={styles.intro}>{articlesIndex.description}</p>
-      <Suspense fallback={<LoadingState />}>
-        <PublicContentList
-          load={getArticles}
-          emptyText="Henüz yayınlanmış bir içerik bulunmuyor."
-          renderItem={(article) => <ArticleCard article={article} />}
-        />
-      </Suspense>
+    <main id="main-content" className={styles.page}>
+      <header className={styles.header}>
+        <p className={styles.eyebrow}>Yazılar</p>
+        <h1 className={styles.title}>Hacamat ile İlgili Bilgiler</h1>
+        <p className={styles.lead}>{articlesIndex.description}</p>
+      </header>
+      <div className={styles.body}>
+        <Suspense fallback={<LoadingState />}>
+          <PublicContentList
+            load={getArticles}
+            emptyText="Henüz yayınlanmış bir içerik bulunmuyor."
+            renderItem={(article, index) => (
+              <ArticleCard article={article} index={index} />
+            )}
+          />
+        </Suspense>
+      </div>
     </main>
   );
 }

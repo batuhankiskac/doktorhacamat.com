@@ -1,12 +1,18 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { videoThumbnail } from "@/lib/youtube";
 import type { Video } from "@/types/content";
 import CardMedia from "./CardMedia";
 import styles from "./VideoCard.module.css";
 
-export default function VideoCard({ video }: { video: Video }) {
+type VideoCardProps = {
+  video: Video;
+  // Izgaradaki sıra; açılış gecikmesi için (--i = index % 3).
+  index?: number;
+};
+
+export default function VideoCard({ video, index = 0 }: VideoCardProps) {
   const [isPlaying, setIsPlaying] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const thumbnail = videoThumbnail(video);
@@ -17,7 +23,11 @@ export default function VideoCard({ video }: { video: Video }) {
   }, [isPlaying]);
 
   return (
-    <article className={styles.card}>
+    <article
+      className={styles.card}
+      data-reveal
+      style={{ "--i": index % 3 } as CSSProperties}
+    >
       {isPlaying ? (
         <div className={styles.videoContainer}>
           <iframe
@@ -31,13 +41,22 @@ export default function VideoCard({ video }: { video: Video }) {
         </div>
       ) : (
         <CardMedia
-          className={styles.imageContainer}
+          className={styles.media}
           src={thumbnail}
           onClick={() => setIsPlaying(true)}
           buttonLabel={`${video.title} videosunu oynat`}
         >
           <span className={styles.playOverlay} aria-hidden="true">
-            <span className={styles.playButton}>▶</span>
+            <span className={styles.playButton}>
+              <svg
+                className={styles.playIcon}
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path d="M9 6.5v11l9-5.5z" fill="currentColor" />
+              </svg>
+            </span>
           </span>
         </CardMedia>
       )}

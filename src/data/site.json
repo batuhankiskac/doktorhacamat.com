@@ -92,17 +92,14 @@
         ],
         "items": [
           {
-            "icon": "✅",
             "title": "Steril ve Tek Kullanımlık Malzemeler",
             "text": ""
           },
           {
-            "icon": "✅",
             "title": "Uzman Hekim Kontrolü",
             "text": ""
           },
           {
-            "icon": "✅",
             "title": "Hasta Konforuna Önem Veren Uygulama",
             "text": ""
           }
@@ -123,42 +120,36 @@
         "subtitle": "Hacamat ile ilgili öne sürülen etkiler üzerine çalışmalar sürmektedir. Aşağıdaki başlıklardan her bir konunun ayrıntılarına ulaşabilirsiniz.",
         "items": [
           {
-            "icon": "🩸",
             "title": "Detoks Etkisi",
             "text": "Vücuttan atılan maddeler ve ağır metaller üzerine öne sürülen görüşler ve bu konudaki çalışmalar.",
             "href": "/faydalar/detoks",
             "linkLabel": "Detayları Okuyun →"
           },
           {
-            "icon": "🛡️",
             "title": "Bağışıklık Sistemi",
             "text": "Bağışıklık hücreleri üzerindeki olası etkileri araştırılan bir konudur.",
             "href": "/faydalar/bagisiklik",
             "linkLabel": "Detayları Okuyun →"
           },
           {
-            "icon": "⚡",
             "title": "Enerji ve Zindelik",
             "text": "Yorgunluk hissi ve genel zindelik üzerine öne sürülen olası etkiler.",
             "href": "/faydalar/enerji",
             "linkLabel": "Detayları Okuyun →"
           },
           {
-            "icon": "💆",
             "title": "Ağrı Yönetimi",
             "text": "Migren, bel ağrısı ve fibromiyalji gibi kronik ağrılarda destekleyici olabileceği bildirilen etkiler.",
             "href": "/faydalar/agri",
             "linkLabel": "Detayları Okuyun →"
           },
           {
-            "icon": "💓",
             "title": "Kan Dolaşımı",
             "text": "Kan dolaşımı üzerine öne sürülen etkiler ve bu konudaki çalışmalar.",
             "href": "/faydalar/enerji",
             "linkLabel": "Detayları Okuyun →"
           },
           {
-            "icon": "🧠",
             "title": "Stres ve Rahatlama",
             "text": "Rahatlama hissi ile stres ve anksiyete üzerine olası etkiler.",
             "href": "/faydalar/stres",
@@ -172,12 +163,10 @@
         "title": "Tedavi Süreci",
         "items": [
           {
-            "icon": "⚠️",
             "title": "Hacamat Öncesi",
             "text": "- Hacamattan en az 3 saat önce yeme içme kesilmesi önerilir (su hariç).\n- Uygulamadan önceki 24 saat içinde hayvansal gıdaların (et, süt, yoğurt, yumurta) tüketilmemesi önerilir; bu konuda hekiminize danışınız.\n- Kan sulandırıcı ilaç kullanıyorsanız hekiminize bilgi veriniz.\n- Aşırı yorgunluk ve uykusuzluktan kaçınılmalıdır."
           },
           {
-            "icon": "✨",
             "title": "Hacamat Sonrası",
             "text": "- İşlemden sonra en az 2 saat yemek yenmemesi önerilir.\n- O gün ağır ve yağlı hayvansal gıdalardan kaçınılması önerilir.\n- Bol su tüketilmesi önerilir.\n- Uygulama bölgesinde enfeksiyon riski açısından 12-24 saat duş alınmaması önemlidir.\n- Ağır fiziksel aktivitelerden ve aşırı soğuktan korunulması önerilir."
           }
@@ -192,37 +181,30 @@
         ],
         "items": [
           {
-            "icon": "🚫",
             "title": "Gebelik",
             "text": "Gebelik döneminde uygulanması uygun olmayabilir."
           },
           {
-            "icon": "🚫",
             "title": "Kanama bozukluğu veya kan sulandırıcı (antikoagülan) ilaç kullanımı",
             "text": "Kanama riskini artırabileceği için hekim değerlendirmesi gerekir."
           },
           {
-            "icon": "🚫",
             "title": "Ağır anemi (kansızlık)",
             "text": "Kansızlık durumunda uygun olmayabilir."
           },
           {
-            "icon": "🚫",
             "title": "Kontrolsüz diyabet",
             "text": "Diyabetin dengede olmadığı durumlarda uygun olmayabilir."
           },
           {
-            "icon": "🚫",
             "title": "Uygulama bölgesinde cilt enfeksiyonu veya yara",
             "text": "Bu bölgelerde uygulanmamalıdır."
           },
           {
-            "icon": "🚫",
             "title": "Kalp pili kullanımı veya ciddi kalp hastalığı",
             "text": "Kardiyak durumlarda hekim değerlendirmesi gerekir."
           },
           {
-            "icon": "🚫",
             "title": "Aktif enfeksiyon veya ateş",
             "text": "Ateşli veya enfeksiyonlu dönemde uygulanmaması önerilir."
           }

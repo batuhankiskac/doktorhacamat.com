@@ -204,7 +204,7 @@ export default function AnalyticsConsent() {
         (isDialog ? (
           <div
             ref={panelRef}
-            className={styles.banner}
+            className={`${styles.banner} ${styles.dialog}`}
             role="dialog"
             aria-modal="true"
             aria-labelledby={TITLE_ID}

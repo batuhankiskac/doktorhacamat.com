@@ -40,7 +40,14 @@ export default function Home() {
 
   return (
     <main id="main-content" className={styles.main}>
-      {hero ? <HomeHero section={hero} imageAlt={heroImageAlt} /> : null}
+      {hero ? (
+        <HomeHero
+          section={hero}
+          imageAlt={heroImageAlt}
+          eyebrow={siteData.brand.doctorName}
+          workingHours={siteData.contact.workingHours}
+        />
+      ) : null}
       {about ? <HomeAbout section={about} reason={reason} /> : null}
       {benefits ? <HomeBenefits section={benefits} /> : null}
       {steps ? <HomeSteps section={steps} /> : null}

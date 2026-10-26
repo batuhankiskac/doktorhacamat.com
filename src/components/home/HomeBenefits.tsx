@@ -1,42 +1,59 @@
+import type { CSSProperties } from "react";
 import Link from "next/link";
+import ArrowIcon from "@/components/ArrowIcon";
+import buttonStyles from "@/styles/button.module.css";
 import type { HomeCardsSection } from "./types";
 import SectionHeader from "./SectionHeader";
-import styles from "./home.module.css";
+import styles from "./HomeBenefits.module.css";
 
 type HomeBenefitsProps = {
   section: HomeCardsSection;
 };
 
+// Veride bağlantı etiketinin sonunda ok karakteri var; ok artık SVG ile çiziliyor.
+function cleanLinkLabel(label = "Detayları Okuyun") {
+  return label.replace(/\s*→\s*$/, "");
+}
+
 export default function HomeBenefits({ section }: HomeBenefitsProps) {
   return (
-    <section
-      id={section.id}
-      className={`${styles.section} ${styles.benefitsSection}`}
-    >
+    <section id={section.id} className={styles.section}>
       <div className={styles.container}>
-        <SectionHeader title={section.title} intro={section.subtitle} centered />
-        <div className={styles.cardGrid}>
-          {section.items.map((item) => (
-            <Link
-              key={item.href ?? item.title}
-              href={item.href ?? "#"}
-              className={styles.benefitCard}
+        <SectionHeader
+          index="02"
+          eyebrow="Faydalar"
+          title={section.title}
+          split
+          intro={section.subtitle ? <p>{section.subtitle}</p> : undefined}
+        />
+        <ul className={styles.grid}>
+          {section.items.map((item, index) => (
+            <li
+              key={item.title}
+              className={styles.item}
+              data-reveal
+              style={{ "--i": index % 4 } as CSSProperties}
             >
-              <span className={styles.benefitIcon} aria-hidden="true">
-                {item.icon}
-              </span>
-              <h3 className={styles.benefitTitle}>{item.title}</h3>
-              {item.text ? (
-                <p className={styles.benefitText}>{item.text}</p>
-              ) : null}
-              {/* Her bağlantının adı kart başlığını da içerir (ekran okuyucu için). */}
-              <span className={styles.readMore}>
-                {item.linkLabel}
-                <span className="sr-only"> ({item.title})</span>
-              </span>
-            </Link>
+              <Link href={item.href ?? "#"} className={styles.card}>
+                <span className={styles.index}>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <h3 className={styles.cardTitle}>{item.title}</h3>
+                {item.text ? (
+                  <p className={styles.cardText}>{item.text}</p>
+                ) : null}
+                {/* Her bağlantının adı kart başlığını da içerir (ekran okuyucu için). */}
+                <span className={styles.cardLink}>
+                  {cleanLinkLabel(item.linkLabel)}
+                  <ArrowIcon
+                    className={`${buttonStyles.icon} ${styles.arrow}`}
+                  />
+                  <span className="sr-only"> ({item.title})</span>
+                </span>
+              </Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );

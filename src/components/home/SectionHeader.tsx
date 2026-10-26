@@ -1,30 +1,45 @@
-import styles from "./home.module.css";
+import type { ReactNode } from "react";
+import styles from "./SectionHeader.module.css";
 
 type SectionHeaderProps = {
   title: string;
-  intro?: string;
-  centered?: boolean;
+  // Etiketteki sıra numarası, örn. "01".
+  index?: string;
+  eyebrow?: string;
+  intro?: ReactNode;
+  // Geniş ekranda başlık solda, açıklama sağda ve alta hizalı olur.
+  split?: boolean;
   headingLevel?: "h2" | "h3";
   className?: string;
 };
 
-// Eski sitedeki bölüm başlığı: başlık, isteğe bağlı açıklama ve altın çizgi.
+// Bölüm başlığı: etiket (sıra + ad), h2 ve isteğe bağlı açıklama.
 export default function SectionHeader({
   title,
+  index,
+  eyebrow,
   intro,
-  centered = false,
+  split = false,
   headingLevel: Heading = "h2",
   className,
 }: SectionHeaderProps) {
   return (
     <header
-      className={[styles.header, centered ? styles.headerCentered : "", className]
+      data-reveal
+      className={[styles.header, split ? styles.split : "", className]
         .filter(Boolean)
         .join(" ")}
     >
-      <Heading className={styles.title}>{title}</Heading>
-      {intro ? <p className={styles.intro}>{intro}</p> : null}
-      <div className={styles.divider} aria-hidden="true" />
+      <div className={styles.main}>
+        {index || eyebrow ? (
+          <p className={styles.eyebrow}>
+            {index ? <span className={styles.index}>{index}</span> : null}
+            {eyebrow ? <span>{eyebrow}</span> : null}
+          </p>
+        ) : null}
+        <Heading className={styles.title}>{title}</Heading>
+      </div>
+      {intro ? <div className={styles.intro}>{intro}</div> : null}
     </header>
   );
 }

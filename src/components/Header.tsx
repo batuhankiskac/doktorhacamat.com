@@ -2,13 +2,24 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+} from "react";
 import site from "@/data/site.json";
 import { contactHref, isActivePath, navigationLinks } from "@/data/navigation";
+import ArrowIcon from "@/components/ArrowIcon";
+import buttonStyles from "@/styles/button.module.css";
 import styles from "./Header.module.css";
 
 // Masaüstü genişlik. Header.module.css içindeki 1024px mobil kuralıyla birlikte değişmeli.
 const DESKTOP_MEDIA_QUERY = "(min-width: 1025px)";
+
+// Bu değerin üstünde başlık incelir ve alt çizgi belirir.
+const SCROLLED_OFFSET = 8;
 
 export default function Header() {
   const pathname = usePathname();
@@ -29,6 +40,19 @@ export default function Header() {
 
   const closeMenu = useCallback(() => {
     setIsMenuOpen(false);
+  }, []);
+
+  // Kaydırma durumu DOM'a doğrudan yazılır; her kaydırmada yeniden render olmaz.
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    const updateScrolled = () => {
+      header.toggleAttribute("data-scrolled", window.scrollY > SCROLLED_OFFSET);
+    };
+    updateScrolled();
+    window.addEventListener("scroll", updateScrolled, { passive: true });
+    return () => window.removeEventListener("scroll", updateScrolled);
   }, []);
 
   useEffect(() => {
@@ -76,51 +100,69 @@ export default function Header() {
 
   return (
     <header ref={headerRef} className={styles.header}>
-      <Link
-        href="/"
-        className={styles.logo}
-        prefetch={false}
-        onClick={closeMenu}
-      >
-        <span className={styles.doctorName}>{site.brand.doctorName}</span>
-        <span className={styles.siteName}>{site.brand.siteName}</span>
-      </Link>
+      <div className={styles.inner}>
+        <Link
+          href="/"
+          className={styles.logo}
+          prefetch={false}
+          onClick={closeMenu}
+        >
+          <span className={styles.doctorName}>{site.brand.doctorName}</span>
+          <span className={styles.siteName}>{site.brand.siteName}</span>
+        </Link>
 
-      <button
-        ref={buttonRef}
-        type="button"
-        className={`${styles.hamburger} ${isMenuOpen ? styles.open : ""}`}
-        onClick={toggleMenu}
-        aria-label="Menü"
-        aria-expanded={isMenuOpen}
-        aria-controls="primary-navigation"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+        <button
+          ref={buttonRef}
+          type="button"
+          className={`${styles.hamburger} ${isMenuOpen ? styles.open : ""}`}
+          onClick={toggleMenu}
+          aria-label="Menü"
+          aria-expanded={isMenuOpen}
+          aria-controls="primary-navigation"
+        >
+          <span></span>
+          <span></span>
+        </button>
 
-      <nav
-        id="primary-navigation"
-        aria-label="Ana menü"
-        className={`${styles.nav} ${isMenuOpen ? styles.open : ""}`}
-      >
-        {/* Header CTA'sı (İletişim) logo ve alt bilgiyle aynı rotayı tekrarlar; prefetch kapalı. */}
-        {navigationLinks.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={
-              link.href === contactHref ? styles.ctaButton : styles.navLink
-            }
-            prefetch={link.href === contactHref ? false : undefined}
-            aria-current={isActivePath(pathname, link.href) ? "page" : undefined}
-            onClick={closeMenu}
-          >
-            {link.label}
-          </Link>
-        ))}
-      </nav>
+        <nav
+          id="primary-navigation"
+          aria-label="Ana menü"
+          className={`${styles.nav} ${isMenuOpen ? styles.open : ""}`}
+        >
+          {/* Header CTA'sı (İletişim) logo ve alt bilgiyle aynı rotayı tekrarlar; prefetch kapalı. */}
+          {navigationLinks.map((link, index) => {
+            const isCta = link.href === contactHref;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={isCta ? styles.ctaButton : styles.navLink}
+                prefetch={isCta ? false : undefined}
+                aria-current={
+                  isActivePath(pathname, link.href) ? "page" : undefined
+                }
+                onClick={closeMenu}
+                style={{ "--i": index } as CSSProperties}
+              >
+                {isCta ? (
+                  <>
+                    {link.label}
+                    <ArrowIcon className={buttonStyles.icon} />
+                  </>
+                ) : (
+                  <>
+                    {/* Dekoratif sıra numarası; bağlantı adına dahil edilmez. */}
+                    <span className={styles.navIndex} aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    {link.label}
+                  </>
+                )}
+              </Link>
+            );
+          })}
+        </nav>
+      </div>
     </header>
   );
 }

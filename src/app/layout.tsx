@@ -1,20 +1,23 @@
 import type { Metadata } from "next";
-import { Outfit, Playfair_Display } from "next/font/google";
+import { Fraunces, Manrope } from "next/font/google";
 import site from "@/data/site.json";
 import { SITE_NAME } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+// Başlık ve metin yazı tipleri; globals.css bunları --font-display ve
+// --font-body değişkenlerinden okur.
+const display = Fraunces({
   style: ["normal", "italic"],
+  axes: ["opsz", "SOFT"],
   subsets: ["latin", "latin-ext"],
-  variable: "--font-playfair",
+  variable: "--font-display",
   display: "swap",
 });
 
-const outfit = Outfit({
+const body = Manrope({
   subsets: ["latin", "latin-ext"],
-  variable: "--font-outfit",
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -48,7 +51,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="tr">
-      <body className={`${outfit.variable} ${playfair.variable}`}>
+      <body className={`${body.variable} ${display.variable}`}>
         {children}
       </body>
     </html>

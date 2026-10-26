@@ -1,0 +1,71 @@
+/* Öncesi / Sonrası: yan yana iki panel. "Sonrası" birincil renkte, açık metinli.
+   Numaralar CSS sayacıyla (01, 02…) çizilir; listede ince çizgiler. */
+.section {
+  composes: section from "../../styles/layout.module.css";
+}
+
+.container {
+  composes: container from "../../styles/layout.module.css";
+}
+
+.panels {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.75rem, 3.5vw, 3rem);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+
+.panelAfter {
+  border-color: transparent;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  --color-heading: var(--color-on-primary);
+  --color-line: rgb(255 255 255 / 20%);
+  --color-accent-ink: var(--color-accent-on-dark);
+}
+
+.panelTitle {
+  margin-bottom: 1.5rem;
+  font-size: var(--step-2);
+  line-height: 1.2;
+  color: var(--color-heading);
+}
+
+.list {
+  list-style: none;
+  counter-reset: step;
+  border-top: 1px solid var(--color-line);
+}
+
+.list li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 3rem minmax(0, 1fr);
+  gap: 1rem;
+  padding-block: 1.125rem;
+  border-bottom: 1px solid var(--color-line);
+  line-height: 1.6;
+}
+
+.list li::before {
+  content: counter(step, decimal-leading-zero);
+  font-family: var(--font-display), Georgia, serif;
+  font-size: var(--step-1);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+  color: var(--color-accent-ink);
+}
+
+@media (min-width: 900px) {
+  .panels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

@@ -3,12 +3,11 @@ import type { ReactNode } from "react";
 import cardStyles from "../styles/card.module.css";
 import styles from "./CardMedia.module.css";
 
-const SIZES = "(max-width: 700px) 100vw, 400px";
+// Kartlar 1, 2 veya 3 sütunda; görselin gerçek genişliğine yakın boyut seçilir.
+const SIZES = "(max-width: 640px) 100vw, (max-width: 1100px) 50vw, 400px";
 
 type CardMediaProps = {
   src?: string | null;
-  // Görsel yoksa gösterilecek etiket.
-  placeholder?: string;
   className?: string;
   children?: ReactNode;
   // Verilirse medya tıklanabilir buton olarak render edilir (video önizlemesi).
@@ -18,7 +17,6 @@ type CardMediaProps = {
 
 export default function CardMedia({
   src,
-  placeholder,
   className,
   children,
   onClick,
@@ -37,13 +35,7 @@ export default function CardMedia({
           className={cardStyles.image}
           sizes={SIZES}
         />
-      ) : (
-        placeholder && (
-          <div className={styles.placeholder} aria-hidden="true">
-            {placeholder}
-          </div>
-        )
-      )}
+      ) : null}
       {children}
     </>
   );

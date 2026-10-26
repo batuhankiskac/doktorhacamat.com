@@ -1,60 +1,150 @@
-.container {
-  composes: container from "../../../styles/page.module.css";
-  --page-max: 800px;
-  font-size: 1.05rem;
-  line-height: 1.75;
+/* Gizlilik: masaüstünde sol sütunda yapışkan içindekiler, sağda 68ch'lik metin. */
+.page {
+  composes: page from "../../../styles/page.module.css";
+}
+
+.header {
+  composes: header from "../../../styles/page.module.css";
+}
+
+.eyebrow {
+  composes: eyebrow from "../../../styles/page.module.css";
+}
+
+.title {
+  composes: title from "../../../styles/page.module.css";
+}
+
+/* Uzun yasal başlık: iskeletin başlık boyutunu yalnız bu sayfada küçültür. */
+.header .title {
+  max-width: 22ch;
+  font-size: var(--step-4);
+}
+
+.lead {
+  composes: lead from "../../../styles/page.module.css";
+}
+
+.body {
+  composes: body from "../../../styles/page.module.css";
+}
+
+.layout {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: 15rem minmax(0, 68ch);
+    gap: clamp(3rem, 7vw, 6.5rem);
+    align-items: start;
+  }
+
+  .toc {
+    position: sticky;
+    top: calc(var(--header-h) + 2.5rem);
+  }
+}
+
+.toc {
+  min-width: 0;
+}
+
+.tocTitle {
+  margin-bottom: 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+}
+
+.tocList {
+  list-style: none;
+  border-top: 1px solid var(--color-line);
+}
+
+.tocList li {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.tocLink {
+  display: block;
+  padding-block: 0.65rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--color-text-light);
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.tocLink:hover {
+  color: var(--color-primary);
+}
+
+/* Okunabilir satır uzunluğu ve rahat ritim. */
+.prose {
+  min-width: 0;
+  font-size: 1.0625rem;
+  line-height: 1.7;
   color: var(--color-text);
 }
 
-.heading {
-  composes: heading from "../../../styles/page.module.css";
-  --heading-size: 2.25rem;
-  --heading-align: left;
-  margin-bottom: 2.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 3px solid var(--color-secondary);
-}
-
 .section {
-  margin-bottom: 2.25rem;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
 }
 
 .subheading {
-  margin-bottom: 0.75rem;
-  font-size: 1.35rem;
+  padding-top: 1.75rem;
+  margin-bottom: 1.25rem;
+  border-top: 1px solid var(--color-line);
+  font-size: var(--step-3);
+  line-height: 1.12;
+  scroll-margin-top: calc(var(--header-h) + 2rem);
 }
 
-.section p {
-  margin-bottom: 1rem;
+.prose p {
+  margin-bottom: 1.1rem;
 }
 
+/* Liste işaretleri ochre vurgu noktaları; metin satırları hizalı. */
 .list {
   display: grid;
-  gap: 0.6rem;
-  margin-bottom: 1rem;
-  padding-left: 1.25rem;
+  gap: 0.7rem;
+  margin: 0 0 1.25rem;
+  padding: 0;
+  list-style: none;
 }
 
-.list li::marker {
-  color: var(--color-primary);
+.list li {
+  position: relative;
+  padding-left: 1.4rem;
+}
+
+.list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(0.85em - 0.2rem);
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  background: var(--color-accent);
 }
 
 .list strong {
-  color: var(--color-primary);
+  font-weight: 600;
+  color: var(--color-heading);
 }
 
 .notice {
   margin-top: 3rem;
-  padding: 1rem 1.25rem;
-  border-left: 4px solid var(--color-secondary);
-  border-radius: var(--radius-sm);
+  padding: 1.5rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
   background: var(--color-bg-alt);
   color: var(--color-text-light);
   font-size: 0.95rem;
-}
-
-@media (max-width: 768px) {
-  .heading {
-    --heading-size: 1.9rem;
-  }
+  line-height: 1.6;
 }

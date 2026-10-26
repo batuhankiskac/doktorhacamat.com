@@ -1,14 +1,16 @@
+import type { CSSProperties } from "react";
 import ExternalLink from "@/components/ExternalLink";
 import MapEmbed from "@/components/MapEmbed";
+import SectionHeader from "./SectionHeader";
 import type { HomeContactSection } from "./types";
-import styles from "./home.module.css";
+import styles from "./HomeContact.module.css";
 
 type HomeContactProps = {
   section: HomeContactSection;
   mapEmbedUrl: string;
 };
 
-// Eski sitedeki sosyal medya ikonları (dekoratif; etiket metni yanında yer alır).
+// Sosyal medya ikonları (dekoratif; etiket metni yanında yer alır).
 function SocialIcon({ network }: { network: string }) {
   if (network === "instagram") {
     return (
@@ -45,53 +47,68 @@ export default function HomeContact({
   section,
   mapEmbedUrl,
 }: HomeContactProps) {
+  // Telefon bağlantısı büyük gösterilir; diğer kayıtlar etiket/değer satırıdır.
+  const phone = section.items.find((item) => item.href?.startsWith("tel:"));
+  const rows = section.items.filter((item) => item !== phone);
+
   return (
-    <section id={section.id} className={`${styles.section} ${styles.contact}`}>
+    <section id={section.id} className={styles.section}>
       <div className={styles.container}>
-        <div className={styles.contactGrid}>
-          <div>
-            <h2 className={styles.contactTitle}>{section.title}</h2>
-            {section.subtitle ? (
-              <p className={styles.contactSub}>{section.subtitle}</p>
+        <div className={styles.grid}>
+          <div className={styles.info}>
+            <SectionHeader
+              index="05"
+              eyebrow="İletişim"
+              title={section.title}
+              intro={section.subtitle ? <p>{section.subtitle}</p> : undefined}
+            />
+
+            {phone ? (
+              <div className={styles.phoneBlock} data-reveal>
+                <p className={styles.label}>{phone.title}</p>
+                <a href={phone.href} className={styles.phone}>
+                  {phone.text}
+                </a>
+              </div>
             ) : null}
 
-            {section.items.map((item) => (
-              <div key={item.title} className={styles.infoItem}>
-                <div className={styles.infoLabel}>{item.title}</div>
+            {rows.map((item, index) => (
+              <div
+                key={item.title}
+                className={styles.row}
+                data-reveal
+                style={{ "--i": index } as CSSProperties}
+              >
+                <p className={styles.label}>{item.title}</p>
                 {item.href ? (
-                  <a
-                    href={item.href}
-                    className={`${styles.infoValue} ${
-                      item.href.startsWith("tel:") ? styles.phone : ""
-                    }`}
-                  >
+                  <a href={item.href} className={styles.value}>
                     {item.text}
                   </a>
                 ) : (
-                  <div className={styles.infoValue}>{item.text}</div>
+                  <p className={styles.value}>{item.text}</p>
                 )}
               </div>
             ))}
 
-            <div className={styles.socialLinks}>
-              {section.social.map((link) => {
-                const network = link.label.toLowerCase();
-                return (
+            <div className={styles.row} data-reveal>
+              <p className={styles.label}>Sosyal medya</p>
+              <div className={styles.socials}>
+                {section.social.map((link) => (
                   <ExternalLink
                     key={link.href}
                     href={link.href}
-                    className={`${styles.socialButton} ${styles[network] ?? ""}`}
+                    className={styles.social}
                   >
-                    <SocialIcon network={network} />
+                    <SocialIcon network={link.label.toLowerCase()} />
                     <span>{link.label}</span>
                   </ExternalLink>
-                );
-              })}
+                ))}
+              </div>
             </div>
           </div>
 
           {/* Harita yalnızca kullanıcı isteğiyle yüklenir (MapEmbed). */}
-          <div className={styles.map}>
+          <div className={styles.map} data-reveal="mask">
             <MapEmbed
               embedUrl={mapEmbedUrl}
               title="Hacamat Merkezi konum haritası"

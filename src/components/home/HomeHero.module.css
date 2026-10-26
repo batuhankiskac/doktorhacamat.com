@@ -1,0 +1,177 @@
+/* Ana sayfa girişi: tam genişlik görsel, koyu gradyan ve sol-alt hizalı içerik. */
+.hero {
+  composes: dark from "../../styles/layout.module.css";
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 92vh;
+  height: min(92svh, 860px);
+  min-height: 600px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* Global maske açılışı yuvarlatılmış kırpma kullanır; hero tam kare kalsın diye
+   yalnız ad değiştirilir. */
+.media[data-enter="mask"] {
+  animation-name: heroReveal;
+}
+
+.image {
+  object-fit: cover;
+  object-position: center;
+  animation: heroZoom 2400ms var(--ease-out) both;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top right,
+    rgb(var(--color-ink-rgb) / 85%),
+    rgb(var(--color-ink-rgb) / 25%) 60%,
+    transparent
+  );
+}
+
+/* Dar ekranda metin görselin üstünü kapladığı için perde koyulaşır. */
+@media (max-width: 899.98px) {
+  .overlay {
+    background: linear-gradient(
+      to top,
+      rgb(var(--color-ink-rgb) / 90%),
+      rgb(var(--color-ink-rgb) / 60%) 55%,
+      rgb(var(--color-ink-rgb) / 30%)
+    );
+  }
+}
+
+.inner {
+  composes: container from "../../styles/layout.module.css";
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 2rem;
+  padding-block: clamp(2.5rem, 7vh, 4.5rem);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 48rem;
+}
+
+.eyebrow {
+  composes: eyebrow from "../../styles/layout.module.css";
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  max-width: 16ch;
+  margin-bottom: 1.5rem;
+  font-size: var(--step-5);
+  line-height: 0.98;
+  letter-spacing: var(--display-tracking);
+  color: var(--color-on-dark);
+}
+
+.title em {
+  font-style: italic;
+  color: var(--color-accent-on-dark);
+}
+
+.subtitle {
+  max-width: 36rem;
+  margin-bottom: 2.25rem;
+  font-size: var(--step-1);
+  line-height: 1.6;
+  color: rgb(246 237 227 / 88%);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Saat bilgisi: ince çerçeveli, yarı saydam cam çip. */
+.chip {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-self: flex-start;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgb(255 255 255 / 22%);
+  border-radius: var(--radius-md);
+  background: rgb(var(--color-ink-rgb) / 35%);
+  backdrop-filter: blur(12px);
+  color: var(--color-on-dark);
+}
+
+.chipLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--color-accent-on-dark);
+}
+
+.chipValue {
+  font-size: var(--step-0);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Küçük ekranda içerik yüksekliği kadar uzar; kırpılmaz. */
+@media (max-width: 639px) {
+  .hero {
+    height: auto;
+    min-height: min(92svh, 860px);
+  }
+
+  .inner {
+    padding-top: 6rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .inner {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .chip {
+    align-self: flex-end;
+  }
+}
+
+@keyframes heroReveal {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes heroZoom {
+  from {
+    transform: scale(1.08);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}

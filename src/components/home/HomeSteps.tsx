@@ -1,6 +1,7 @@
+import type { CSSProperties } from "react";
 import type { HomeStepsSection } from "./types";
 import SectionHeader from "./SectionHeader";
-import styles from "./home.module.css";
+import styles from "./HomeSteps.module.css";
 
 type HomeStepsProps = {
   section: HomeStepsSection;
@@ -18,28 +19,26 @@ export default function HomeSteps({ section }: HomeStepsProps) {
   return (
     <section id={section.id} className={styles.section}>
       <div className={styles.container}>
-        <SectionHeader title={section.title} />
-        <div className={styles.stepsGrid}>
-          {section.items.map((item, index) => (
-            <div
-              key={item.title}
-              className={`${styles.stepBox} ${
-                index === 0 ? styles.stepBefore : styles.stepAfter
-              }`}
-            >
-              <h3 className={styles.stepTitle}>
-                {item.icon ? (
-                  <span aria-hidden="true">{item.icon} </span>
-                ) : null}
-                {item.title}
-              </h3>
-              <ul className={styles.stepList}>
-                {toBullets(item.text).map((line) => (
-                  <li key={line}>{line}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+        <SectionHeader index="03" eyebrow="Süreç" title={section.title} />
+        <div className={styles.panels}>
+          {section.items.map((item, index) => {
+            const isAfter = index !== 0;
+            return (
+              <article
+                key={item.title}
+                data-reveal
+                style={{ "--i": index } as CSSProperties}
+                className={`${styles.panel} ${isAfter ? styles.panelAfter : ""}`}
+              >
+                <h3 className={styles.panelTitle}>{item.title}</h3>
+                <ol className={styles.list}>
+                  {toBullets(item.text).map((line) => (
+                    <li key={line}>{line}</li>
+                  ))}
+                </ol>
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

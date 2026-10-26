@@ -1,8 +1,7 @@
 // site.json > home.sections yapısı. Bölümler id ile eşlenir; sıra ve metinler
-// JSON'dan gelir.
+// JSON'dan gelir. İkonlar kaldırıldı: bölümler sayı ve çizgi simgelerle gösterilir.
 
 export type HomeItem = {
-  icon?: string;
   title: string;
   text?: string;
   href?: string;

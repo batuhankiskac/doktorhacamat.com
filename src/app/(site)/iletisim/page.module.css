@@ -1,68 +1,105 @@
-.container {
-  composes: container from "../../../styles/page.module.css";
-  --page-max: 800px;
+/* İletişim: sol sütunda etiketli bilgi satırları, sağda harita çerçevesi (5/7). */
+.page {
+  composes: page from "../../../styles/page.module.css";
 }
 
-.heading {
-  composes: heading from "../../../styles/page.module.css";
-  --heading-size: 2.5rem;
+.header {
+  composes: header from "../../../styles/page.module.css";
 }
 
-.card {
-  background: var(--color-surface);
-  padding: 3rem;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
-  text-align: center;
+.eyebrow {
+  composes: eyebrow from "../../../styles/page.module.css";
 }
 
-.map {
-  width: 100%;
-  height: min(400px, 60vh);
-  margin-bottom: 2rem;
-  overflow: hidden;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
+.title {
+  composes: title from "../../../styles/page.module.css";
 }
 
-.map iframe {
-  border: 0;
+.lead {
+  composes: lead from "../../../styles/page.module.css";
 }
 
-.section {
-  margin-bottom: 2rem;
+.body {
+  composes: body from "../../../styles/page.module.css";
+}
+
+.layout {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+@media (min-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: start;
+  }
+}
+
+.info {
+  min-width: 0;
+}
+
+.row {
+  display: grid;
+  justify-items: start;
+  gap: 0.9rem;
+  padding-block: 1.75rem;
+  border-top: 1px solid var(--color-line);
+}
+
+.info > .row:last-child {
+  border-bottom: 1px solid var(--color-line);
 }
 
 .label {
-  display: block;
-  font-size: 0.875rem;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
   color: var(--color-text-light);
-  margin-bottom: 0.5rem;
+}
+
+/* Büyük görünen telefon numarası: display yazı tipi, tabular rakamlar. */
+.phone {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: clamp(1.75rem, 1.1rem + 2vw, 2.5rem);
+  line-height: 1.05;
+  white-space: nowrap;
+  letter-spacing: var(--display-tracking, -0.03em);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-heading);
+  transition: color var(--dur-base) var(--ease-out);
+}
+
+.phone:hover {
+  color: var(--color-primary);
+}
+
+.actions {
+  margin-top: 0.35rem;
 }
 
 .value {
-  font-size: 1.25rem;
-  color: var(--color-primary);
-  font-weight: 500;
+  font-size: var(--step-1);
+  line-height: 1.5;
   font-style: normal;
+  color: var(--color-text);
 }
 
-.hours {
-  color: var(--color-text);
+.link {
+  composes: link from "../../../styles/button.module.css";
+  font-size: 0.95rem;
 }
 
 .social {
   display: flex;
-  justify-content: center;
   flex-wrap: wrap;
-  gap: 1.5rem;
+  gap: 0.5rem 1.75rem;
 }
 
-.social a {
-  color: var(--color-primary);
-  font-weight: 500;
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
+.mapWrap {
+  height: clamp(360px, 42vw, 560px);
+  border-radius: var(--radius-lg);
 }
