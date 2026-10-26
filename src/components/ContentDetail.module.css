@@ -1,21 +1,35 @@
-/* Makale detayı. Kapak görseli tam kapsayıcı genişliğinde; başlık ve metin ortadaki sütunda. */
+/* Makale detayı: üstte başlık (solda) ve kapak (sağda, 4/5), altta okuma sütunu.
+   Başlık ve metin aynı sol kenarı paylaşır. */
 .page {
   composes: page from "../styles/page.module.css";
 }
 
-/* Başlık ve metin aynı sütunu paylaşır (≈ .narrow, 68ch civarı). */
+/* Üst bant: mobilde tek sütun, masaüstünde 7/12 başlık + 5/12 kapak. */
+.top {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4rem);
+  align-items: center;
+  margin-bottom: clamp(3rem, 6vw, 4.5rem);
+  padding-bottom: clamp(2.5rem, 5vw, 4rem);
+  border-bottom: 1px solid var(--color-line);
+}
+
+@media (min-width: 900px) {
+  .top {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  }
+}
+
+/* Okuma sütunu: kısa satır uzunluğu, başlıkla aynı sol kenar. */
 .column {
-  width: min(100% - 2 * var(--gutter), 720px);
-  margin-inline: auto;
+  max-width: 40rem;
 }
 
 .header {
   display: flex;
   flex-direction: column;
   gap: 1.25rem;
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
-  padding-bottom: clamp(2rem, 4vw, 3rem);
-  border-bottom: 1px solid var(--color-line);
+  min-width: 0;
 }
 
 .backLink {
@@ -51,13 +65,12 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Kapak: kapsayıcı genişliği, 16/9 ama 70svh'yi geçmez. */
+/* Kapak: 4/5 dikey oran; masaüstünde en fazla 620px yükseklik. */
 .hero {
   position: relative;
   width: 100%;
-  max-height: 70svh;
-  aspect-ratio: 16 / 9;
-  margin-block: clamp(2.5rem, 5vw, 3.5rem);
+  max-height: 620px;
+  aspect-ratio: 4 / 5;
   overflow: hidden;
   border-radius: var(--radius-lg);
   background: var(--color-bg-alt);
@@ -68,17 +81,10 @@
 }
 
 .content {
-  max-width: 68ch;
   color: var(--color-text);
   font-size: var(--step-0);
   line-height: 1.75;
   overflow-wrap: anywhere;
-}
-
-@media (min-width: 900px) {
-  .content {
-    font-size: var(--step-1);
-  }
 }
 
 /* Blok öğeler arası boşluk: paragraflar 1.25em. */

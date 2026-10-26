@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Manrope } from "next/font/google";
+import { Geist, Newsreader } from "next/font/google";
 import site from "@/data/site.json";
 import { SITE_NAME } from "@/lib/metadata";
 import { SITE_URL } from "@/lib/site";
@@ -7,15 +7,15 @@ import "./globals.css";
 
 // Başlık ve metin yazı tipleri; globals.css bunları --font-display ve
 // --font-body değişkenlerinden okur.
-const display = Fraunces({
+const display = Newsreader({
   style: ["normal", "italic"],
-  axes: ["opsz", "SOFT"],
+  axes: ["opsz"],
   subsets: ["latin", "latin-ext"],
   variable: "--font-display",
   display: "swap",
 });
 
-const body = Manrope({
+const body = Geist({
   subsets: ["latin", "latin-ext"],
   variable: "--font-body",
   display: "swap",
@@ -50,7 +50,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="tr">
+    <html lang="tr" data-scroll-behavior="smooth">
       <body className={`${body.variable} ${display.variable}`}>
         {children}
       </body>

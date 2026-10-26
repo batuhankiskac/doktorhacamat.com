@@ -4,8 +4,8 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 92vh;
-  height: min(92svh, 860px);
+  height: 86vh;
+  height: min(86svh, 780px);
   min-height: 600px;
   overflow: hidden;
   isolation: isolate;
@@ -23,32 +23,45 @@
   animation-name: heroReveal;
 }
 
+/* Soğuk mor-mavi eldivenleri sıcak paletle uyumlu hâle getirmek için hafif renk düzeltmesi. */
 .image {
   object-fit: cover;
   object-position: center;
+  filter: saturate(0.7) sepia(0.18) contrast(1.02);
   animation: heroZoom 2400ms var(--ease-out) both;
 }
 
+/* Mürdüm ana renk tonu, mürekkep gradyanının altına karışır (ikinci katman). */
 .overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to top right,
-    rgb(var(--color-ink-rgb) / 85%),
-    rgb(var(--color-ink-rgb) / 25%) 60%,
-    transparent
-  );
+  background:
+    linear-gradient(
+      to top right,
+      rgb(var(--color-ink-rgb) / 85%),
+      rgb(var(--color-ink-rgb) / 25%) 60%,
+      transparent
+    ),
+    linear-gradient(
+      rgb(var(--color-primary-rgb) / 35%),
+      rgb(var(--color-primary-rgb) / 35%)
+    );
 }
 
 /* Dar ekranda metin görselin üstünü kapladığı için perde koyulaşır. */
 @media (max-width: 899.98px) {
   .overlay {
-    background: linear-gradient(
-      to top,
-      rgb(var(--color-ink-rgb) / 90%),
-      rgb(var(--color-ink-rgb) / 60%) 55%,
-      rgb(var(--color-ink-rgb) / 30%)
-    );
+    background:
+      linear-gradient(
+        to top,
+        rgb(var(--color-ink-rgb) / 90%),
+        rgb(var(--color-ink-rgb) / 60%) 55%,
+        rgb(var(--color-ink-rgb) / 30%)
+      ),
+      linear-gradient(
+        rgb(var(--color-primary-rgb) / 35%),
+        rgb(var(--color-primary-rgb) / 35%)
+      );
   }
 }
 
@@ -70,13 +83,17 @@
   max-width: 48rem;
 }
 
+/* Görsel üstünde okunurluk için açık altın ton ve hafif gölge. */
 .eyebrow {
   composes: eyebrow from "../../styles/layout.module.css";
   margin-bottom: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--color-accent-on-dark);
+  text-shadow: 0 1px 12px rgb(var(--color-ink-rgb) / 45%);
 }
 
 .title {
-  max-width: 16ch;
+  max-width: 14ch;
   margin-bottom: 1.5rem;
   font-size: var(--step-5);
   line-height: 0.98;
@@ -94,7 +111,7 @@
   margin-bottom: 2.25rem;
   font-size: var(--step-1);
   line-height: 1.6;
-  color: rgb(246 237 227 / 88%);
+  color: rgb(var(--color-bg-rgb) / 88%);
 }
 
 .actions {
@@ -135,7 +152,7 @@
 @media (max-width: 639px) {
   .hero {
     height: auto;
-    min-height: min(92svh, 860px);
+    min-height: min(86svh, 780px);
   }
 
   .inner {

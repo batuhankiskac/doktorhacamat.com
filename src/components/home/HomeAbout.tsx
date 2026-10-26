@@ -43,9 +43,22 @@ export default function HomeAbout({ section, reason }: HomeAboutProps) {
             className={styles.sticky}
           />
           <div className={styles.body}>
-            {lead ? <p className={styles.lead}>{lead}</p> : null}
-            {rest.map((paragraph) => (
-              <p key={paragraph} className={styles.paragraph}>
+            {lead ? (
+              <p
+                className={styles.lead}
+                data-reveal
+                style={{ "--i": 0 } as CSSProperties}
+              >
+                {lead}
+              </p>
+            ) : null}
+            {rest.map((paragraph, index) => (
+              <p
+                key={paragraph}
+                className={styles.paragraph}
+                data-reveal
+                style={{ "--i": (index + 1) % 4 } as CSSProperties}
+              >
                 {paragraph}
               </p>
             ))}
@@ -56,7 +69,7 @@ export default function HomeAbout({ section, reason }: HomeAboutProps) {
                     key={item.title}
                     className={styles.checkItem}
                     data-reveal
-                    style={{ "--i": index } as CSSProperties}
+                    style={{ "--i": index % 4 } as CSSProperties}
                   >
                     <CheckIcon />
                     <span>{item.title}</span>
@@ -65,7 +78,7 @@ export default function HomeAbout({ section, reason }: HomeAboutProps) {
               </ul>
             ) : null}
             {reason ? (
-              <aside id={reason.id} className={styles.note} data-reveal>
+              <aside id={reason.id} className={styles.note} data-reveal="scale">
                 <h3 className={styles.noteTitle}>{reason.title}</h3>
                 {reason.paragraphs.map((paragraph) => (
                   <p key={paragraph} className={styles.noteText}>

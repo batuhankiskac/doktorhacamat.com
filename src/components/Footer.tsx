@@ -43,7 +43,7 @@ export default function Footer() {
               <ContactActions inverted />
             </div>
             <Link href="/iletisim" prefetch={false} className={styles.ctaButton}>
-              Randevu Bilgisi Alın
+              Randevu Al
               <ArrowIcon className={buttonStyles.icon} />
             </Link>
           </div>

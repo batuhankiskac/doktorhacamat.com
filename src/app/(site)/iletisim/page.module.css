@@ -64,7 +64,7 @@
 /* Büyük görünen telefon numarası: display yazı tipi, tabular rakamlar. */
 .phone {
   font-family: var(--font-display), Georgia, serif;
-  font-size: clamp(1.75rem, 1.1rem + 2vw, 2.5rem);
+  font-size: var(--step-3);
   line-height: 1.05;
   white-space: nowrap;
   letter-spacing: var(--display-tracking, -0.03em);

@@ -129,7 +129,7 @@ export default function Header() {
           aria-label="Ana menü"
           className={`${styles.nav} ${isMenuOpen ? styles.open : ""}`}
         >
-          {/* Header CTA'sı (İletişim) logo ve alt bilgiyle aynı rotayı tekrarlar; prefetch kapalı. */}
+          {/* Header CTA'sı (Randevu Al) logo ve alt bilgiyle aynı rotayı tekrarlar; prefetch kapalı. */}
           {navigationLinks.map((link, index) => {
             const isCta = link.href === contactHref;
             return (
@@ -146,7 +146,7 @@ export default function Header() {
               >
                 {isCta ? (
                   <>
-                    {link.label}
+                    Randevu Al
                     <ArrowIcon className={buttonStyles.icon} />
                   </>
                 ) : (

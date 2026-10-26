@@ -47,8 +47,9 @@
   gap: 1rem;
   padding-block: 1.25rem;
   border-bottom: 1px solid var(--color-line);
-  font-family: var(--font-display), Georgia, serif;
+  font-family: var(--font-body), sans-serif;
   font-size: var(--step-1);
+  font-weight: 600;
   line-height: 1.35;
   color: var(--color-heading);
 }

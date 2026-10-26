@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ReactMarkdown from "react-markdown";
@@ -12,6 +13,9 @@ import {
 import buttonStyles from "@/styles/button.module.css";
 import ExternalLink from "./ExternalLink";
 import styles from "./ContentDetail.module.css";
+
+// data-enter gecikmesi: sıra numarası CSS'te --i olarak okunur.
+const enterDelay = (i: number) => ({ "--i": i }) as CSSProperties;
 
 interface ContentDetailProps {
   backHref: string;
@@ -39,34 +43,48 @@ export default function ContentDetail({
   return (
     <main id="main-content" className={styles.page}>
       <article>
-        <div className={styles.column}>
+        {/* Başlık solda, kapak sağda (masaüstü); mobilde alt alta. */}
+        <div className={styles.top}>
           <header className={styles.header}>
-            <Link href={backHref} className={styles.backLink}>
+            <Link
+              href={backHref}
+              className={styles.backLink}
+              data-enter
+              style={enterDelay(0)}
+            >
               ← {backLabel}
             </Link>
-            <p className={styles.eyebrow}>Makale</p>
-            <h1 className={styles.title}>{title}</h1>
+            <p className={styles.eyebrow} data-enter style={enterDelay(1)}>
+              Makale
+            </p>
+            <h1 className={styles.title} data-enter style={enterDelay(2)}>
+              {title}
+            </h1>
             {date && (
-              <time dateTime={date} className={styles.date}>
+              <time
+                dateTime={date}
+                className={styles.date}
+                data-enter
+                style={enterDelay(3)}
+              >
                 {formatDate(date)}
               </time>
             )}
           </header>
-        </div>
 
-        {/* Kapak görseli kapsayıcının tam genişliğinde; maskeyle açılır. */}
-        {imageUrl && (
-          <div className={styles.hero} data-reveal="mask">
-            <Image
-              src={imageUrl}
-              alt={imageAlt}
-              fill
-              preload
-              sizes="(max-width: 1240px) 100vw, 1240px"
-              className={styles.heroImage}
-            />
-          </div>
-        )}
+          {imageUrl && (
+            <div className={styles.hero} data-reveal="mask">
+              <Image
+                src={imageUrl}
+                alt={imageAlt}
+                fill
+                preload
+                sizes="(min-width: 900px) 40vw, 100vw"
+                className={styles.heroImage}
+              />
+            </div>
+          )}
+        </div>
 
         <div className={styles.column}>
           <div className={styles.content}>
@@ -122,6 +140,7 @@ export default function ContentDetail({
             <section
               className={styles.citationsSection}
               aria-labelledby="sources"
+              data-reveal
             >
               <h2 id="sources" className={styles.citationsTitle}>
                 Kaynakça

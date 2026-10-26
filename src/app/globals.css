@@ -1,52 +1,55 @@
-/* Doktor Hacamat — "Toprak ve okra": sıcak kum zemin, koyu kan kırmızısı
-   (oxblood) birincil renk, okra vurgu. Başlıklar Fraunces, metin Manrope. */
+/* Doktor Hacamat: Prof. Dr. Muharrem Kıskaç sitelerinin ortak paleti (fildişi zemin,
+   mürekkep metin, şampanya altını vurgu); siteye özel olan yalnız ana renk
+   (bordo-mürdüm). Başlıklar Newsreader, metin Geist. */
 :root {
-  --color-bg: #F7F1E9;
-  --color-bg-rgb: 247 241 233;
-  --color-bg-alt: #EFE4D5;
-  --color-surface: #FFFDFA;
-  --color-text: #2A1C17;
-  --color-ink-rgb: 42 28 23;
-  --color-heading: #2A1C17;
-  --color-text-light: #67574F;
-  --color-muted: #67574F;
-  --color-line: rgb(42 28 23 / 12%);
-  --color-line-strong: rgb(42 28 23 / 28%);
+  --color-bg: #F7F4EE;
+  --color-bg-rgb: 247 244 238;
+  --color-bg-alt: #EFE9DF;
+  --color-surface: #FFFFFF;
+  --color-text: #141A17;
+  --color-ink-rgb: 20 26 23;
+  --color-heading: #141A17;
+  --color-text-light: #5A605C;
+  --color-muted: #5A605C;
+  --color-line: rgb(20 26 23 / 12%);
+  --color-line-strong: rgb(20 26 23 / 26%);
 
-  --color-primary: #7A2E23;
-  --color-primary-rgb: 122 46 35;
-  --color-primary-dark: #5B1F18;
-  --color-primary-subtle-bg: #F2E1DA;
-  --color-on-primary: #FBF4EC;
-  --color-secondary: #9A5A1F;
-  --color-accent: #B9822F;
-  --color-accent-ink: #8C4F1C;
-  --color-accent-soft: #F0DCC3;
-  --color-accent-on-dark: #E8C38F;
-  --color-accent-light: #F0DCC3;
-  --color-selection: #F0DCC3;
-  --gold: #B9822F;
-  --gold-light: #E8C38F;
+  /* Ortak premium vurgu: şampanya altını. Metin olarak yalnız --color-accent-ink. */
+  --color-accent: #B8925A;
+  --color-accent-ink: #86663A;
+  --color-accent-soft: #EFE3CF;
+  --color-accent-on-dark: #D9BC8C;
+  --color-accent-light: #EFE3CF;
+  --color-secondary: #86663A;
+  --color-selection: #EFE3CF;
+  --gold: #B8925A;
+  --gold-light: #D9BC8C;
 
-  --color-dark: #2A1C17;
-  --color-on-dark: #F6EDE3;
-  --color-on-dark-muted: rgb(246 237 227 / 72%);
+  --color-on-primary: #F7F4EE;
+  --color-on-dark: #F4EFE6;
+  --color-on-dark-muted: rgb(244 239 230 / 72%);
+  --color-input-border: #878C88;
 
-  --color-input-border: #8E7F77;
   --heading-weight: 400;
-  --heading-tracking: -0.01em;
+  --heading-tracking: -0.015em;
   --display-tracking: -0.03em;
+
+  --color-primary: #4A1F2E;
+  --color-primary-rgb: 74 31 46;
+  --color-primary-dark: #34141F;
+  --color-primary-subtle-bg: #F0E2E6;
+  --color-dark: #22121A;
 }
 
 :root {
   /* Ortak ölçüler: tipografi ölçeği, boşluklar ve hareket. */
   --step--1: 0.875rem;
   --step-0: 1.0625rem;
-  --step-1: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
-  --step-2: clamp(1.375rem, 1.2rem + 0.75vw, 1.75rem);
-  --step-3: clamp(1.75rem, 1.4rem + 1.5vw, 2.625rem);
-  --step-4: clamp(2.25rem, 1.6rem + 2.9vw, 4rem);
-  --step-5: clamp(2.75rem, 1.7rem + 5vw, 6rem);
+  --step-1: clamp(1.125rem, 1.08rem + 0.2vw, 1.25rem);
+  --step-2: clamp(1.3125rem, 1.2rem + 0.45vw, 1.5625rem);
+  --step-3: clamp(1.625rem, 1.4rem + 0.9vw, 2.0625rem);
+  --step-4: clamp(2rem, 1.6rem + 1.6vw, 3rem);
+  --step-5: clamp(2.375rem, 1.75rem + 2.6vw, 4.375rem);
 
   --container: 1240px;
   --container-narrow: 760px;
@@ -171,9 +174,10 @@ p {
 }
 
 /* ---------- Hareket ----------
-   [data-enter]: sayfa yüklenince oynayan giriş animasyonu.
-   [data-reveal]: öğe ekrana girerken kaydırmaya bağlı açılır (scroll-driven
-   animation; JS yok). Desteklemeyen tarayıcıda içerik doğrudan görünür.
+   [data-enter]: sayfa yüklenince oynayan giriş animasyonu (yalnız CSS).
+   [data-reveal]: ekrana girince bir kez, sabit sürede açılır. Bunu
+   MotionObserver, Web Animations API ile yapar; DOM özniteliklerine
+   dokunmadığı için hidrasyonu etkilemez. JS yoksa içerik hep görünür.
    Sıralı gecikme için öğeye style={{ "--i": n }} verilir. */
 [data-enter] {
   animation: enter-rise var(--dur-reveal) var(--ease-out) both;
@@ -189,31 +193,10 @@ p {
   animation-delay: calc(var(--i, 0) * 110ms);
 }
 
-@supports (animation-timeline: view()) {
-  [data-reveal] {
-    animation: enter-rise var(--ease-out) both;
-    animation-timeline: view();
-    animation-range: entry calc(var(--i, 0) * 6%) entry calc(80% + var(--i, 0) * 10%);
-  }
-
-  [data-reveal="fade"] {
-    animation-name: enter-fade;
-  }
-
-  [data-reveal="scale"] {
-    animation-name: reveal-scale;
-  }
-
-  [data-reveal="mask"] {
-    animation-name: enter-mask;
-    animation-range: entry 0% cover 45%;
-  }
-}
-
 @keyframes enter-rise {
   from {
     opacity: 0;
-    transform: translate3d(0, 32px, 0);
+    transform: translate3d(0, 28px, 0);
   }
   to {
     opacity: 1;
@@ -230,17 +213,6 @@ p {
   }
 }
 
-@keyframes reveal-scale {
-  from {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
 @keyframes enter-mask {
   from {
     clip-path: inset(100% 0 0 0);
@@ -252,6 +224,30 @@ p {
   }
 }
 
+/* Sayfa geçişi: (site)/layout.tsx içindeki <ViewTransition default="page">.
+   Eski sayfa hafifçe kaybolur, yenisi aşağıdan yükselerek gelir. */
+::view-transition-old(.page) {
+  animation: page-out 200ms var(--ease-in-out) both;
+}
+
+::view-transition-new(.page) {
+  animation: page-in 560ms var(--ease-out) 60ms both;
+}
+
+@keyframes page-out {
+  to {
+    opacity: 0;
+    transform: translate3d(0, -8px, 0);
+  }
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -259,7 +255,10 @@ p {
 
   *,
   *::before,
-  *::after {
+  *::after,
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
     animation: none !important;

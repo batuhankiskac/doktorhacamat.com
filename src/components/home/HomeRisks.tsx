@@ -77,7 +77,7 @@ export default function HomeRisks({ section }: HomeRisksProps) {
           ))}
         </ul>
         {section.note ? (
-          <div className={styles.note} data-reveal>
+          <div className={styles.note} data-reveal="scale">
             <InfoIcon />
             <p>{section.note}</p>
           </div>

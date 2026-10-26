@@ -17,7 +17,7 @@ test("ana sayfa ve temel navigasyon erişilebilir", async ({
     navigation.getByRole("link", { name: "Faydaları", exact: true }),
   ).toBeVisible();
   await expect(
-    navigation.getByRole("link", { name: "İletişim", exact: true }),
+    navigation.getByRole("link", { name: "Randevu Al", exact: true }),
   ).toBeVisible();
 });
 
@@ -188,7 +188,7 @@ test("aktif sayfa bağlantısı işaretlenir", async ({ page, isMobile }) => {
   }
   const navigation = page.getByRole("navigation", { name: "Ana menü" });
   await expect(
-    navigation.getByRole("link", { name: "İletişim", exact: true }),
+    navigation.getByRole("link", { name: "Randevu Al", exact: true }),
   ).toHaveAttribute("aria-current", "page");
   await expect(
     navigation.getByRole("link", { name: "Faydaları", exact: true }),

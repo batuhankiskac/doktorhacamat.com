@@ -1,8 +1,13 @@
+import type { CSSProperties } from "react";
 import bioData from "@/data/bio.json";
 import contactData from "@/data/contact.json";
 import siteData from "@/data/site.json";
 import { pageMetadata } from "@/lib/metadata";
 import styles from "./page.module.css";
+
+// data-enter ve data-reveal gecikmeleri: sıra numarası CSS'te --i olarak okunur.
+const enterDelay = (i: number) => ({ "--i": i }) as CSSProperties;
+const revealDelay = (i: number) => ({ "--i": i % 4 }) as CSSProperties;
 
 const DESCRIPTION =
   "Kişisel verilerin işlenmesi, çerez kullanımı ve KVKK kapsamındaki haklarınız hakkında aydınlatma metni.";
@@ -30,16 +35,24 @@ export default function PrivacyPage() {
   return (
     <main id="main-content" className={styles.page}>
       <header className={styles.header}>
-        <p className={styles.eyebrow}>Yasal Bilgilendirme</p>
-        <h1 className={styles.title}>
+        <p className={styles.eyebrow} data-enter style={enterDelay(0)}>
+          Yasal Bilgilendirme
+        </p>
+        <h1 className={styles.title} data-enter style={enterDelay(1)}>
           Gizlilik ve Çerez Politikası / KVKK Aydınlatma Metni
         </h1>
-        <p className={styles.lead}>{DESCRIPTION}</p>
+        <p className={styles.lead} data-enter style={enterDelay(2)}>
+          {DESCRIPTION}
+        </p>
       </header>
 
       <div className={styles.body}>
         <div className={styles.layout}>
-          <nav className={styles.toc} aria-label="İçindekiler">
+          <nav
+            className={styles.toc}
+            aria-label="İçindekiler"
+            data-reveal="fade"
+          >
             <p className={styles.tocTitle} aria-hidden="true">
               İçindekiler
             </p>
@@ -55,7 +68,11 @@ export default function PrivacyPage() {
           </nav>
 
           <div className={styles.prose}>
-            <section className={styles.section}>
+            <section
+              className={styles.section}
+              data-reveal
+              style={revealDelay(0)}
+            >
               <h2 id="veri-sorumlusu" className={styles.subheading}>
                 1. Veri sorumlusu
               </h2>
@@ -70,7 +87,11 @@ export default function PrivacyPage() {
               </ul>
             </section>
 
-            <section className={styles.section}>
+            <section
+              className={styles.section}
+              data-reveal
+              style={revealDelay(1)}
+            >
               <h2 id="islenen-veriler" className={styles.subheading}>
                 2. İşlenen veriler
               </h2>
@@ -103,7 +124,11 @@ export default function PrivacyPage() {
               </p>
             </section>
 
-            <section className={styles.section}>
+            <section
+              className={styles.section}
+              data-reveal
+              style={revealDelay(2)}
+            >
               <h2 id="isleme-amaclari" className={styles.subheading}>
                 3. İşleme amaçları
               </h2>
@@ -120,7 +145,11 @@ export default function PrivacyPage() {
               </ul>
             </section>
 
-            <section className={styles.section}>
+            <section
+              className={styles.section}
+              data-reveal
+              style={revealDelay(3)}
+            >
               <h2 id="hukuki-sebepler" className={styles.subheading}>
                 4. Hukuki sebepler (KVKK m.5)
               </h2>
@@ -137,7 +166,11 @@ export default function PrivacyPage() {
               </ul>
             </section>
 
-            <section className={styles.section}>
+            <section
+              className={styles.section}
+              data-reveal
+              style={revealDelay(4)}
+            >
               <h2 id="yurt-disi-aktarim" className={styles.subheading}>
                 5. Yurt dışına aktarım
               </h2>
@@ -151,7 +184,11 @@ export default function PrivacyPage() {
               </p>
             </section>
 
-            <section className={styles.section}>
+            <section
+              className={styles.section}
+              data-reveal
+              style={revealDelay(5)}
+            >
               <h2 id="saklama-sureleri" className={styles.subheading}>
                 6. Saklama süreleri
               </h2>
@@ -176,7 +213,11 @@ export default function PrivacyPage() {
               </ul>
             </section>
 
-            <section className={styles.section}>
+            <section
+              className={styles.section}
+              data-reveal
+              style={revealDelay(6)}
+            >
               <h2 id="cerez-tercihleri" className={styles.subheading}>
                 7. Çerez tercihleriniz
               </h2>
@@ -191,7 +232,11 @@ export default function PrivacyPage() {
               </p>
             </section>
 
-            <section className={styles.section}>
+            <section
+              className={styles.section}
+              data-reveal
+              style={revealDelay(7)}
+            >
               <h2 id="haklariniz" className={styles.subheading}>
                 8. KVKK kapsamındaki haklarınız (m.11)
               </h2>
@@ -228,7 +273,7 @@ export default function PrivacyPage() {
               </p>
             </section>
 
-            <p className={styles.notice}>
+            <p className={styles.notice} data-reveal>
               Bu metin bir şablondur. Yayımlanmadan önce veri sorumlusunun durumu,
               kullanılan hizmetler ve ilgili mevzuat bakımından bir avukat tarafından
               incelenmeli ve gerekirse güncellenmelidir.

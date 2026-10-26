@@ -26,14 +26,20 @@ export default function HomeSteps({ section }: HomeStepsProps) {
             return (
               <article
                 key={item.title}
-                data-reveal
-                style={{ "--i": index } as CSSProperties}
+                data-reveal="scale"
+                style={{ "--i": index % 4 } as CSSProperties}
                 className={`${styles.panel} ${isAfter ? styles.panelAfter : ""}`}
               >
                 <h3 className={styles.panelTitle}>{item.title}</h3>
                 <ol className={styles.list}>
-                  {toBullets(item.text).map((line) => (
-                    <li key={line}>{line}</li>
+                  {toBullets(item.text).map((line, lineIndex) => (
+                    <li
+                      key={line}
+                      data-reveal
+                      style={{ "--i": lineIndex % 4 } as CSSProperties}
+                    >
+                      {line}
+                    </li>
                   ))}
                 </ol>
               </article>
