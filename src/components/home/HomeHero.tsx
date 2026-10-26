@@ -40,7 +40,7 @@ export default function HomeHero({
   return (
     <section className={styles.hero} id={section.id}>
       {/* Hero görseli LCP öğesidir: preload ile erken istenir. */}
-      <div className={styles.media} data-enter="mask">
+      <div className={styles.media}>
         <Image
           src="/images/hero.webp"
           alt={imageAlt}

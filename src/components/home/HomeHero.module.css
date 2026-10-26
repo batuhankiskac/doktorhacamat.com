@@ -17,12 +17,6 @@
   overflow: hidden;
 }
 
-/* Global maske açılışı yuvarlatılmış kırpma kullanır; hero tam kare kalsın diye
-   yalnız ad değiştirilir. */
-.media[data-enter="mask"] {
-  animation-name: heroReveal;
-}
-
 /* Soğuk mor-mavi eldivenleri sıcak paletle uyumlu hâle getirmek için hafif renk düzeltmesi. */
 .image {
   object-fit: cover;
@@ -170,16 +164,6 @@
 
   .chip {
     align-self: flex-end;
-  }
-}
-
-@keyframes heroReveal {
-  from {
-    clip-path: inset(100% 0 0 0);
-  }
-
-  to {
-    clip-path: inset(0 0 0 0);
   }
 }
 
