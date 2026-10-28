@@ -17,11 +17,11 @@
   overflow: hidden;
 }
 
-/* Soğuk mor-mavi eldivenleri sıcak paletle uyumlu hâle getirmek için hafif renk düzeltmesi. */
+/* Doktor kadrajın ortasında; ten rengi bozulmasın diye yalnız hafif ısıtma. */
 .image {
   object-fit: cover;
-  object-position: center;
-  filter: saturate(0.7) sepia(0.18) contrast(1.02);
+  object-position: 53% 30%;
+  filter: saturate(0.9) sepia(0.06);
   animation: heroZoom 2400ms var(--ease-out) both;
 }
 
@@ -37,25 +37,30 @@
       transparent
     ),
     linear-gradient(
-      rgb(var(--color-primary-rgb) / 35%),
-      rgb(var(--color-primary-rgb) / 35%)
+      rgb(var(--color-primary-rgb) / 18%),
+      rgb(var(--color-primary-rgb) / 18%)
     );
 }
 
-/* Dar ekranda metin görselin üstünü kapladığı için perde koyulaşır. */
+/* Dar ekranda portre üstte ayrı bir bant olur, metin altındaki koyu zemine geçer;
+   böylece yazı yüzün üstüne binmez. */
 @media (max-width: 899.98px) {
+  .hero {
+    height: auto;
+    min-height: 0;
+  }
+
+  .media {
+    position: relative;
+    inset: auto;
+    aspect-ratio: 5 / 4;
+    max-height: 56svh;
+    width: 100%;
+    mask-image: linear-gradient(to bottom, #000 62%, transparent);
+  }
+
   .overlay {
-    background:
-      linear-gradient(
-        to top,
-        rgb(var(--color-ink-rgb) / 90%),
-        rgb(var(--color-ink-rgb) / 60%) 55%,
-        rgb(var(--color-ink-rgb) / 30%)
-      ),
-      linear-gradient(
-        rgb(var(--color-primary-rgb) / 35%),
-        rgb(var(--color-primary-rgb) / 35%)
-      );
+    display: none;
   }
 }
 
@@ -142,19 +147,21 @@
   font-variant-numeric: tabular-nums;
 }
 
-/* Küçük ekranda içerik yüksekliği kadar uzar; kırpılmaz. */
-@media (max-width: 639px) {
-  .hero {
-    height: auto;
-    min-height: min(86svh, 780px);
-  }
-
+/* Dar ekranda içerik portrenin hemen altından başlar. */
+@media (max-width: 899.98px) {
   .inner {
-    padding-top: 6rem;
+    margin-top: -1.5rem;
+    padding-top: 0;
   }
 }
 
 @media (min-width: 900px) {
+  /* Görsel sağa kayar, sol kenarı koyu zemine yumuşakça karışır; metin yüzün üstüne binmez. */
+  .media {
+    inset-inline-start: 30%;
+    mask-image: linear-gradient(to right, transparent, #000 32%);
+  }
+
   .inner {
     flex-direction: row;
     align-items: flex-end;

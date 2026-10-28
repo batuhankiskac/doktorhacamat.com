@@ -39,14 +39,14 @@ export default function HomeHero({
 
   return (
     <section className={styles.hero} id={section.id}>
-      {/* Hero görseli LCP öğesidir: preload ile erken istenir. */}
+      {/* Hero görseli (muayenehanede doktor portresi) LCP öğesidir: preload ile erken istenir. */}
       <div className={styles.media}>
         <Image
-          src="/images/hero.webp"
+          src="/images/doctor.avif"
           alt={imageAlt}
           fill
           preload
-          sizes="100vw"
+          sizes="(min-width: 900px) 70vw, 100vw"
           className={styles.image}
         />
       </div>

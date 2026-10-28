@@ -59,6 +59,10 @@
       "label": "Öncesi & Sonrası"
     },
     {
+      "href": "/videolar",
+      "label": "Videolar"
+    },
+    {
       "href": "/iletisim",
       "label": "İletişim"
     }
@@ -280,6 +284,10 @@
         "href": "/#nedir"
       },
       {
+        "label": "Videolar",
+        "href": "/videolar"
+      },
+      {
         "label": "İletişim",
         "href": "/iletisim"
       },
@@ -295,10 +303,9 @@
   },
   "images": [
     {
-      "file": "hacamat_hero_image.png",
+      "file": "doctor.avif",
       "usedIn": "hero",
-      "alt": "Hacamat tedavisini temsil eden ana sayfa görseli",
-      "note": "Dosya uzantısı .png, ancak içeriği JPEG (1024x1024). Görsel okunamadı; alt metni eski metne (“Hacamat Tedavisi”) dayanarak yazıldı. Yeniden kaydedilmesi/doğrulanması önerilir."
+      "alt": "Prof. Dr. Muharrem Kıskaç"
     }
   ]
 }
