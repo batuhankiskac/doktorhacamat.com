@@ -40,9 +40,10 @@ export default async function BenefitDetailPage({ params }: PageProps) {
     <ContentDetail
       backHref={FAYDALAR_PATH}
       backLabel="Faydalara Dön"
+      eyebrow="Fayda"
       title={article.title}
       imageUrl={article.imageUrl}
-      imageAlt={`${article.title} makale kapak görseli`}
+      imageAlt={`${article.title} kapak görseli`}
       date={article.createdAt}
       markdown={article.content}
       citations={article.citations}

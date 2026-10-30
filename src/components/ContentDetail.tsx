@@ -20,6 +20,7 @@ const enterDelay = (i: number) => ({ "--i": i }) as CSSProperties;
 interface ContentDetailProps {
   backHref: string;
   backLabel: string;
+  eyebrow?: string;
   title: string;
   imageUrl?: string | null;
   imageAlt?: string;
@@ -31,6 +32,7 @@ interface ContentDetailProps {
 export default function ContentDetail({
   backHref,
   backLabel,
+  eyebrow = "Makale",
   title,
   imageUrl,
   imageAlt = "",
@@ -55,7 +57,7 @@ export default function ContentDetail({
               ← {backLabel}
             </Link>
             <p className={styles.eyebrow} data-enter style={enterDelay(1)}>
-              Makale
+              {eyebrow}
             </p>
             <h1 className={styles.title} data-enter style={enterDelay(2)}>
               {title}
