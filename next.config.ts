@@ -99,8 +99,6 @@ const nextConfig: NextConfig = {
         destination: item.destination,
         permanent: true,
       })),
-      { source: "/makaleler", destination: "/faydalar", permanent: true },
-      { source: "/makaleler/:id", destination: "/faydalar/:id", permanent: true },
       { source: "/hakkinda", destination: "/", permanent: true },
     ];
   },

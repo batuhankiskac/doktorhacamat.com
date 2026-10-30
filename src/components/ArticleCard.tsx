@@ -11,10 +11,16 @@ type ArticleCardProps = {
   article: ArticleSummary;
   // Izgaradaki sıra; açılış gecikmesi için (--i = index % 3).
   index?: number;
+  // Detay sayfalarının kök yolu: Firestore makaleleri /makaleler, sabit
+  // faydalar /faydalar altında yayınlanır.
+  basePath?: string;
 };
 
-export default function ArticleCard({ article, index = 0 }: ArticleCardProps) {
-
+export default function ArticleCard({
+  article,
+  index = 0,
+  basePath = "/makaleler",
+}: ArticleCardProps) {
   return (
     <article
       className={styles.card}
@@ -22,7 +28,7 @@ export default function ArticleCard({ article, index = 0 }: ArticleCardProps) {
       style={{ "--i": index % 3 } as CSSProperties}
     >
       <Link
-        href={`/faydalar/${article.id}`}
+        href={`${basePath}/${article.id}`}
         className={styles.anchor}
         aria-label={`${article.title} makalesini oku`}
       >

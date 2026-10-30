@@ -1,11 +1,6 @@
 // Firestore belgelerini uygulama tiplerine çeviren saf fonksiyonlar.
 // server-only içermez; birim testlerinde doğrudan kullanılabilir.
-import type {
-  Article,
-  ArticleSummary,
-  Service,
-  Video,
-} from "@/types/content";
+import type { Article, ArticleSummary, Video } from "@/types/content";
 
 export type RawDocument = Record<string, unknown>;
 
@@ -74,17 +69,6 @@ export function toArticle(id: string, data: RawDocument): Article {
             typeof item === "string" && item.trim() !== "",
         )
       : [],
-  };
-}
-
-export function toService(id: string, data: RawDocument): Service {
-  return {
-    id,
-    title: text(data.title),
-    description: text(data.description),
-    imageUrl: imageUrl(data),
-    createdAt: isoDate(data.createdAt),
-    updatedAt: isoDate(data.updatedAt),
   };
 }
 

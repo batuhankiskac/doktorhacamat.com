@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { getArticles, getVideos } from "@/lib/content";
+import { faydalar, FAYDALAR_PATH } from "@/lib/faydalar";
 import { SITE_URL } from "@/lib/site";
 import type { ArticleSummary } from "@/types/content";
 
@@ -15,7 +16,8 @@ type ChangeFrequency = MetadataRoute.Sitemap[number]["changeFrequency"];
 // Hizmetler sayfası bu sitede yoktur; /hakkinda kaldırılmıştır (ana sayfaya yönlenir).
 const staticRoutes: [string, ChangeFrequency, number][] = [
   ["", "weekly", 1],
-  ["/faydalar", "weekly", 0.8],
+  ["/makaleler", "weekly", 0.8],
+  [FAYDALAR_PATH, "weekly", 0.8],
   ["/iletisim", "yearly", 0.6],
   ["/gizlilik", "yearly", 0.3],
 ];
@@ -32,7 +34,7 @@ async function readOrEmpty<T>(label: string, read: () => Promise<T[]>): Promise<
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const articles = await readOrEmpty<ArticleSummary>("faydalar", getArticles);
+  const articles = await readOrEmpty<ArticleSummary>("makaleler", getArticles);
   // Video sayfası boşken haritaya eklenmez: boş sayfa dizine girmesin.
   const videos = await readOrEmpty("videolar", getVideos);
 
@@ -45,8 +47,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...(videos.length > 0
       ? [{ url: `${SITE_URL}/videolar`, changeFrequency: "weekly" as const, priority: 0.7 }]
       : []),
+    // Faydalar sabit içeriktir (src/data/faydalar.json).
+    ...faydalar.map((item) => ({
+      url: `${SITE_URL}${FAYDALAR_PATH}/${item.id}`,
+      lastModified: item.updatedAt ?? item.createdAt ?? undefined,
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
     ...articles.map((article) => ({
-      url: `${SITE_URL}/faydalar/${article.id}`,
+      url: `${SITE_URL}/makaleler/${article.id}`,
       lastModified: article.updatedAt ?? article.createdAt ?? undefined,
       changeFrequency: "monthly" as const,
       priority: 0.7,

@@ -6,10 +6,10 @@ export default async function ArticlesAdminPage() {
   const articles = await getArticles();
   return (
     <AdminContentList
-      title="Faydalar"
+      title="Makaleler"
       addHref="/admin/makaleler/ekle"
-      addLabel="Yeni Fayda Ekle"
-      emptyText="Henüz eklenmiş bir fayda yok."
+      addLabel="Yeni Makale Ekle"
+      emptyText="Henüz eklenmiş bir makale yok."
       deleteAction={deleteArticle}
       items={articles.map((article) => ({
         id: article.id,

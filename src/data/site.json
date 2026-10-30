@@ -32,9 +32,13 @@
       "title": "Hacamat Merkezi | Prof. Dr. Muharrem Kıskaç",
       "description": "Prof. Dr. Muharrem Kıskaç gözetiminde, hijyenik koşullarda hacamat uygulaması. Geleneksel yöntem, modern tıbbi yaklaşım."
     },
-    "articlesIndex": {
+    "benefitsIndex": {
       "title": "Hacamatın Faydaları",
       "description": "Hacamatın öne sürülen etkileri ve bu konudaki çalışmalar hakkında bilgiler. Bilgilendirme amaçlıdır; hekim değerlendirmesinin yerini tutmaz."
+    },
+    "articlesIndex": {
+      "title": "Makaleler",
+      "description": "Hacamat ve sağlık üzerine yazılar. Bilgilendirme amaçlıdır; hekim değerlendirmesinin yerini tutmaz."
     },
     "about": {
       "title": "Hacamat Nedir?",
@@ -59,7 +63,7 @@
       "label": "Öncesi & Sonrası"
     },
     {
-      "href": "/faydalar",
+      "href": "/makaleler",
       "label": "Makaleler"
     },
     {
@@ -286,6 +290,10 @@
       {
         "label": "Hakkında",
         "href": "/#nedir"
+      },
+      {
+        "label": "Makaleler",
+        "href": "/makaleler"
       },
       {
         "label": "Videolar",

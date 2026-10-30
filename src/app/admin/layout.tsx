@@ -20,11 +20,11 @@ export default async function AdminLayout({
     <div className={styles.container}>
       <aside className={styles.sidebar}>
         <div className={styles.logo}>Admin Panel</div>
-        {/* Bu sitede herkese açık hizmet sayfası yok; Hizmetler bölümü menüde
-            gösterilmez (ortak admin kodu ve e2e testleri için rotası durur). */}
+        {/* Admin panelinde yalnız makaleler ve videolar yönetilir; faydalar
+            sayfaları sabit içeriktir (src/data/faydalar.json). */}
         <nav className={styles.nav} aria-label="Admin menüsü">
           <Link href="/admin/makaleler" className={styles.link}>
-            Faydalar
+            Makaleler
           </Link>
           <Link href="/admin/videolar" className={styles.link}>
             Videolar

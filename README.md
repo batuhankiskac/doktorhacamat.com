@@ -5,27 +5,36 @@ Next.js 16 ile yazılmıştır. Public sayfalar Firebase Admin ile sunucuda rend
 edilir; tarayıcıya yalnız admin girişinde gereken Firebase Auth kodu gönderilir.
 
 Public görünüm, eski statik sitenin renk, yazı tipi ve bölüm yapısını korur.
-İçerik (faydalar/makaleler, videolar) Firestore’dan okunur ve admin panelinden
-yönetilir.
+Makaleler ve videolar Firestore’dan okunur ve admin panelinden yönetilir.
+Faydalar sayfaları eski statik sitenin sabit içeriğidir; repoda
+(`src/data/faydalar.json`) tutulur ve admin panelinden düzenlenmez.
 
 ## Sayfalar
 
 | Yol | İçerik |
 | --- | --- |
 | `/` | Ana sayfa (`src/data/site.json` içindeki `home.sections`, `#nedir`, `#faydalar`, `#oncessonrasi` çapaları) |
-| `/faydalar` | Faydalar (makale) listesi — Firestore `articles` |
-| `/faydalar/[id]` | Makale detayı |
+| `/faydalar` | Hacamatın faydaları listesi — sabit içerik, `src/data/faydalar.json` |
+| `/faydalar/[id]` | Fayda detayı (`agri`, `bagisiklik`, `detoks`, `enerji`, `stres`); diğer kimlikler 404 |
+| `/makaleler` | Makale listesi — Firestore `articles` |
+| `/makaleler/[id]` | Makale detayı — Firestore `articles` |
 | `/videolar` | Videolar — Firestore `videos` |
 | `/iletisim` | Adres, telefon, çalışma saatleri, harita |
 | `/gizlilik` | Gizlilik ve Çerez Politikası / KVKK Aydınlatma Metni |
 | `/admin` | Yönetim paneli (giriş gerekir) |
 
 Eski adresler `next.config.ts` içinde kalıcı (301) yönlendirilir: `*.html`
-adresleri (`site.json` → `redirects`), `/makaleler` ve `/makaleler/[id]`
-(→ `/faydalar`), `/hakkinda` (→ `/`).
+adresleri (`site.json` → `redirects`) ve `/hakkinda` (→ `/`).
 
-Hizmetler bu sitede yoktur; `/hizmetler` sayfası kaldırılmıştır. Admin panelindeki
-Hizmetler bölümü ileride kullanım için korunmuştur.
+Hizmetler bu sitede yoktur; `/hizmetler` sayfası ve admin bölümü kaldırılmıştır.
+
+## Admin paneli
+
+Panelde yalnız iki bölüm vardır: **Makaleler** (Firestore `articles`,
+`/makaleler` sayfaları) ve **Videolar** (Firestore `videos`, `/videolar`).
+Kayıt, güncelleme ve silme işlemleri ilgili önbellek etiketini (`articles`,
+`videos`) hemen günceller. Faydalar sayfalarının metni değiştirilecekse
+`src/data/faydalar.json` düzenlenip site yeniden yayımlanır.
 
 ## Gereksinimler
 
@@ -54,7 +63,7 @@ Bu site, başka bir sitenin Firebase projesini kullanmaz. Sırasıyla:
 2. **Authentication** → Sign-in method: **E-posta/Şifre** sağlayıcısını etkinleştirin.
    **Users** sekmesinden yönetici kullanıcıyı e-posta ve şifreyle ekleyin.
 3. **Firestore Database** oluşturun (production modunda). Koleksiyonlar
-   (`articles`, `services`, `videos`) ilk kayıtla birlikte oluşur.
+   (`articles`, `videos`) ilk kayıtla birlikte oluşur.
 4. **Storage** oluşturun. Yüklenen görseller bu bucket’a yazılır.
 5. Uygulama (web) kaydı ekleyin ve `NEXT_PUBLIC_FIREBASE_*` değerlerini alın.
 6. **Project settings → Service accounts** bölümünden yeni bir özel anahtar
@@ -101,9 +110,10 @@ firebase deploy --only firestore:rules,storage
 
 ## Tohumlama (seed)
 
-`seed/content.json` içindeki başlangıç makalelerini (ve varsa hizmet/video
-kayıtlarını) Firestore’a yazar. Kimlikler JSON’daki `id` değerleridir
-(ör. `detoks`, `bagisiklik`), böylece `/faydalar/detoks` gibi adresler çalışır.
+`seed/content.json` içindeki kayıtları (`articles`, `videos`) Firestore’a yazar.
+Kimlikler JSON’daki `id` değerleridir; makaleler `/makaleler/<id>` adresinde
+yayımlanır. Dosya şu an boştur: eski sitenin fayda yazıları artık Firestore’da
+değil, `src/data/faydalar.json` içinde sabit içerik olarak durur.
 
 ```bash
 npm run seed -- --dry-run   # yazmadan ne yapılacağını listeler
@@ -117,7 +127,8 @@ kimlik bilgisi olmadan da çalışır; bu durumda mevcut belgeler kontrol edilme
 
 ## Veri ve güvenlik
 
-- Public makale, hizmet ve video okumaları sunucudan yapılır.
+- Public makale ve video okumaları sunucudan yapılır; faydalar sayfaları build
+  sırasında sabit veriden üretilir.
 - Admin oturumu doğrulanmış Firebase ID token’dan üretilen `HttpOnly` cookie
   kullanır.
 - `/gizlilik` sayfasında veri sorumlusu Prof. Dr. Muharrem Kıskaç’tır; site adı
@@ -154,7 +165,7 @@ npm run test:e2e
 Playwright testleri sistemde kurulu Google Chrome’u kullanır. Firebase Admin env
 değerleri yoksa public koleksiyonlar boş gösterilir ve admin login entegrasyonu
 yerine anonim ve sahte-cookie yönlendirme davranışı test edilir.
-`E2E_ADMIN_EMAIL` ile `E2E_ADMIN_PASSWORD` tanımlandığında login, hizmet
+`E2E_ADMIN_EMAIL` ile `E2E_ADMIN_PASSWORD` tanımlandığında login, makale
 ekleme-düzenleme-silme ve logout akışı da geçici bir kayıtla çalıştırılır.
 
 ## Production notları (Hostinger)

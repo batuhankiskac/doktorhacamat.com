@@ -1,53 +1,5 @@
 {
-  "articles": [
-    {
-      "id": "detoks",
-      "legacyPath": "/faydalar/detoks.html",
-      "title": "Detoks Etkisi ve Ağır Metal Atılımı",
-      "summary": "Hacamatın vücuttaki maddelerin ve ağır metallerin atılımına ilişkin öne sürülen görüşler ve bu konudaki sınırlı çalışmalar hakkında bilgi.",
-      "content": "## Olası Mekanizma\n\nHacamat (yaş kupa tedavisi), deri altı dokusunda biriken lenfatik ve interstisyel sıvının negatif basınç (vakum) yoluyla yüzeye çekilmesine yol açar. Bu süreçte, normal dolaşımla atılamayan ağır metallerin ve metabolik atıkların da uzaklaştırılabileceği öne sürülmektedir; ancak bu mekanizmalar araştırılmaktadır.\n\n## Ağır Metal Düzeyleri\n\nHacamat ile alınan kanın, normal damar kanına (venöz kan) kıyasla ağır metal düzeyleri açısından farklılık gösterebileceği bildirilmiştir. Bu bulguların klinik önemi ve tekrarlanabilirliği için daha fazla çalışmaya ihtiyaç vardır.\n\n## Ağır Metallerin Atılımı\n\nBazı klinik çalışmalarda, hacamat sonrasında vücuttan atılan sıvıda alüminyum (Al), cıva (Hg), kurşun (Pb) ve kadmiyum (Cd) gibi ağır metallerin bulunduğu gözlemlenmiştir. Bu metallerin çeşitli sağlık sorunlarıyla ilişkilendirildiği bilinmekle birlikte, hacamatın bu metallerin vücuttan uzaklaştırılmasında etkili olduğuna dair yeterli ve tutarlı bilimsel veri bulunmamaktadır.\n\nBu içerik bilgilendirme amaçlıdır ve hekim değerlendirmesinin yerini tutmaz.",
-      "citations": [
-        "Al-Bedah AM, et al. (2019). The medical perspective of cupping therapy: Effects and mechanisms of action. https://pubmed.ncbi.nlm.nih.gov/30006769/"
-      ],
-      "imageUrl": null
-    },
-    {
-      "id": "bagisiklik",
-      "legacyPath": "/faydalar/bagisiklik.html",
-      "title": "Bağışıklık Sistemi ve İmmünomodülasyon",
-      "summary": "Hacamatın bağışıklık hücreleri ve vücut savunması üzerindeki olası etkilerine dair çalışmalar hakkında genel bilgi.",
-      "content": "## İmmünolojik Etkiler\n\nHacamat uygulamasında cildin kontrollü bir şekilde bozulması ve vakum etkisiyle bölgede lokal bir inflamatuar yanıt oluşabileceği öne sürülmektedir. Bu yanıtın, bağışıklık hücrelerinin bölgeye göç etmesine katkı sağlayabileceği düşünülmektedir.\n\n## Hücresel Etkiler\n\nBazı çalışmalarda, hacamat sonrasında doğal katil (NK) hücre sayısı ve aktivitesinde artış olduğu ile T hücresi (lenfosit) üretiminin uyarıldığı bildirilmiştir. Bu bulgular ön niteliktedir; bağışıklık sistemi üzerindeki etkilerinin ve klinik anlamının araştırılmaya devam ettiği unutulmamalıdır.\n\n## Viral ve Bakteriyel Enfeksiyonlar\n\nBağışıklık sistemi üzerindeki olası etkilerin, viral ve bakteriyel enfeksiyonlara karşı yanıtı destekleyebileceği öne sürülmektedir. Ancak hacamatın enfeksiyonlardan korunmada etkili olduğuna dair yeterli bilimsel kanıt bulunmamaktadır. Enfeksiyonlardan korunma ve tedavi konusunda hekiminize danışmanız önerilir.\n\nBu içerik bilgilendirme amaçlıdır ve hekim değerlendirmesinin yerini tutmaz.",
-      "citations": [],
-      "imageUrl": null
-    },
-    {
-      "id": "enerji",
-      "legacyPath": "/faydalar/enerji.html",
-      "title": "Enerji, Zindelik ve Kan Dolaşımı",
-      "summary": "Hacamatın kan dolaşımı, yorgunluk hissi ve genel zindelik üzerine öne sürülen olası etkileri hakkında bilgi.",
-      "content": "## Oksijenlenme ve Kan Akışı\n\nHacamatın mikro dolaşımı artırabileceği ve dokuların daha iyi oksijenlenmesine katkı sağlayabileceği öne sürülmektedir. Kan akışındaki artışın hücrelere giden besin ve oksijen miktarını etkileyebileceği ve bunun enerji düzeyine yansıyabileceği düşünülmektedir; ancak bu etkinin kişiden kişiye değişebileceği ve daha fazla araştırılması gerektiği unutulmamalıdır.\n\n## Yorgunluk ve Oksidatif Stres\n\nLaktik asit gibi metabolitlerin atılımına katkı sağlayabileceği ve kas yorgunluğunun hafiflemesine yardımcı olabileceği öne sürülmektedir. Bazı çalışmalarda hacamatın oksidatif stresi azalttığı ve antioksidan kapasiteyi artırdığı bildirilmiştir. Bu sonuçların genel zindelik hissi üzerindeki etkisi için daha fazla araştırmaya ihtiyaç vardır.\n\nKronik yorgunluk belirtileri olan kişilerin, bu belirtilerin nedenini hekim değerlendirmesiyle öğrenmesi önerilir.\n\nBu içerik bilgilendirme amaçlıdır ve hekim değerlendirmesinin yerini tutmaz.",
-      "citations": [],
-      "imageUrl": null
-    },
-    {
-      "id": "agri",
-      "legacyPath": "/faydalar/agri.html",
-      "title": "Ağrı Yönetimi ve Tedavisi",
-      "summary": "Hacamatın migren, bel ağrısı ve fibromiyalji gibi kronik ağrılar üzerindeki olası etkilerine dair öne sürülen görüşler ve bu konudaki çalışmalar.",
-      "content": "## Ağrı İnhibisyon Mekanizması\n\nHacamatın ağrı üzerindeki etkisinin birkaç farklı mekanizma ile açıklanabileceği öne sürülmektedir. Bunlardan en bilinenlerinden biri “Kapı Kontrol Teorisi”dir (Gate Control Theory). Bu kurama göre, uygulanan vakumun duyusal lifleri uyarmasının ağrı sinyallerinin beyne iletilmesini etkileyebileceği düşünülmektedir.\n\n## Endorfin ve Serotonin Salınımı\n\nBazı çalışmalarda, kupa terapisinin vücudun doğal ağrı kesicileri olan endorfinlerin ve serotonin hormonunun salınımını artırabileceği bildirilmiştir. Bu etkilerin, fiziksel ağrının yanı sıra ağrının yarattığı stresi de azaltabileceği düşünülmektedir.\n\n## Klinik Sonuçlar\n\nKronik bel ağrısı ve migren hastalarında yapılan bazı randomize kontrollü çalışmalarda, düzenli hacamat uygulamasının ağrı şiddeti ve sıklığı üzerinde olumlu etkiler bildirilmiştir. Ancak bu çalışmaların sayısı ve kapsamı sınırlıdır; hacamatın bu durumlardaki yeri için daha fazla araştırmaya ihtiyaç duyulmaktadır.\n\nBu içerik bilgilendirme amaçlıdır ve hekim değerlendirmesinin yerini tutmaz. Ağrı şikâyetiniz için hekiminize başvurunuz.",
-      "citations": [],
-      "imageUrl": null
-    },
-    {
-      "id": "stres",
-      "legacyPath": "/faydalar/stres.html",
-      "title": "Stres, Anksiyete ve Rahatlama",
-      "summary": "Hacamatın sinir sistemi, gevşeme, stres ve anksiyete belirtileri üzerine öne sürülen olası etkilerine dair bilgiler.",
-      "content": "## Parasempatik Aktivasyon\n\nKupa terapisinin otonom sinir sistemini etkileyerek “savaş ya da kaç” (sempatik) durumdan “dinlen ve sindir” (parasempatik) duruma geçişi kolaylaştırabileceği öne sürülmektedir. Sırt bölgesine uygulanan vakumun kas gerginliğini azaltarak gevşeme hissi sağlayabileceği düşünülmektedir.\n\n## Psikolojik Etkiler\n\nBazı çalışmalarda, düzenli hacamat seanslarının anksiyete ve depresif belirtileri hafifletebileceği öne sürülmüştür. Fiziksel rahatlamanın zihinsel dinginliğe ve uyku kalitesine katkı sağlayabileceği düşünülmektedir. Bu konudaki bulgular sınırlıdır ve daha fazla araştırmaya ihtiyaç vardır.\n\nAnksiyete veya depresif belirtiler devam ediyorsa bir hekime başvurulması önerilir.\n\nBu içerik bilgilendirme amaçlıdır ve hekim değerlendirmesinin yerini tutmaz.",
-      "citations": [],
-      "imageUrl": null
-    }
-  ],
+  "articles": [],
   "services": [],
   "videos": []
 }

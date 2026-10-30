@@ -1,24 +1,24 @@
-import { type CSSProperties, Suspense } from "react";
+import type { CSSProperties } from "react";
 import ArticleCard from "@/components/ArticleCard";
-import LoadingState from "@/components/LoadingState";
-import PublicContentList from "@/components/PublicContentList";
+import ContentGrid from "@/components/ContentGrid";
 import site from "@/data/site.json";
-import { getArticles } from "@/lib/content";
+import { FAYDALAR_PATH, getFaydalar } from "@/lib/faydalar";
 import { pageMetadata } from "@/lib/metadata";
 import styles from "./page.module.css";
 
-const articlesIndex = site.seo.articlesIndex;
+const benefitsIndex = site.seo.benefitsIndex;
 
 // data-enter gecikmesi: sıra numarası CSS'te --i olarak okunur.
 const enterDelay = (i: number) => ({ "--i": i }) as CSSProperties;
 
 export const metadata = pageMetadata({
-  title: articlesIndex.title,
-  description: articlesIndex.description,
-  path: "/faydalar",
+  title: benefitsIndex.title,
+  description: benefitsIndex.description,
+  path: FAYDALAR_PATH,
 });
 
-export default function ArticlesPage() {
+// Faydalar sabit içeriktir (src/data/faydalar.json); Firestore okunmaz.
+export default function BenefitsPage() {
   return (
     <main id="main-content" className={styles.page}>
       <header className={styles.header}>
@@ -29,19 +29,20 @@ export default function ArticlesPage() {
           Hacamat ile İlgili Bilgiler
         </h1>
         <p className={styles.lead} data-enter style={enterDelay(2)}>
-          {articlesIndex.description}
+          {benefitsIndex.description}
         </p>
       </header>
       <div className={styles.body}>
-        <Suspense fallback={<LoadingState />}>
-          <PublicContentList
-            load={getArticles}
-            emptyText="Henüz yayınlanmış bir içerik bulunmuyor."
-            renderItem={(article, index) => (
-              <ArticleCard article={article} index={index} />
-            )}
-          />
-        </Suspense>
+        <ContentGrid>
+          {getFaydalar().map((article, index) => (
+            <ArticleCard
+              key={article.id}
+              article={article}
+              index={index}
+              basePath={FAYDALAR_PATH}
+            />
+          ))}
+        </ContentGrid>
       </div>
     </main>
   );

@@ -1,4 +1,4 @@
-import { getArticles } from "@/lib/content";
+import { faydalar, FAYDALAR_PATH } from "@/lib/faydalar";
 import { resolveContentHref } from "@/lib/home-links";
 import { pageMetadata } from "@/lib/metadata";
 import siteData from "@/data/site.json";
@@ -28,11 +28,14 @@ function getSection<K extends HomeSection["kind"]>(id: string, kind: K) {
     : undefined;
 }
 
+// Fayda kartları sabit fayda sayfalarına bağlanır; site.json'da olmayan bir
+// kimlik yazılırsa kart liste sayfasına düşer.
+const benefitIds = new Set(faydalar.map((item) => item.id));
+
 const heroImageAlt =
   siteData.images.find((image) => image.usedIn === "hero")?.alt ?? "";
 
-export default async function Home() {
-  const articleIds = new Set((await getArticles()).map((article) => article.id));
+export default function Home() {
   const hero = getSection("hero", "hero");
   const about = getSection("nedir", "text");
   const reason = getSection("neden-hacamat", "text");
@@ -41,7 +44,7 @@ export default async function Home() {
     ...benefitSection,
     items: benefitSection.items?.map((item) => ({
       ...item,
-      href: resolveContentHref(item.href, "/faydalar", articleIds),
+      href: resolveContentHref(item.href, FAYDALAR_PATH, benefitIds),
     })),
   };
   const steps = getSection("oncessonrasi", "steps");

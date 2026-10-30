@@ -14,10 +14,6 @@ export interface Article extends ContentBase {
 
 export type ArticleSummary = Omit<Article, "content" | "citations">;
 
-export interface Service extends ContentBase {
-  description: string;
-}
-
 export interface Video extends ContentBase {
   youtubeId: string;
 }

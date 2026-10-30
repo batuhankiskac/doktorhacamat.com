@@ -1,28 +1,29 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ContentDetail from "@/components/ContentDetail";
-import { getArticle } from "@/lib/content";
+import { faydalar, FAYDALAR_PATH, getFayda } from "@/lib/faydalar";
 import { pageMetadata } from "@/lib/metadata";
 
 type PageProps = { params: Promise<{ id: string }> };
 
-// Build'de Firestore'a gidilmez; detay sayfaları ilk istekte üretilip ISR ile
-// önbelleğe alınır. Bilinmeyen id'ler notFound() ile 404 döner.
+// Faydalar sabit içeriktir; beş sayfa build'de üretilir, diğer id'ler 404 döner.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
-  return [];
+  return faydalar.map((item) => ({ id: item.id }));
 }
 
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { id } = await params;
-  const article = await getArticle(id);
+  const article = getFayda(id);
   if (!article) notFound();
 
   return pageMetadata({
     title: article.title,
     description: article.summary,
-    path: `/faydalar/${id}`,
+    path: `${FAYDALAR_PATH}/${id}`,
     image: article.imageUrl,
     type: "article",
     publishedTime: article.createdAt,
@@ -30,16 +31,14 @@ export async function generateMetadata({
   });
 }
 
-// Bu rotayı saran bir loading.tsx/Suspense yoktur; notFound() yanıt akışı
-// başlamadan çalışır ve gerçek 404 durum kodu döner.
-export default async function ArticleDetailPage({ params }: PageProps) {
+export default async function BenefitDetailPage({ params }: PageProps) {
   const { id } = await params;
-  const article = await getArticle(id);
+  const article = getFayda(id);
   if (!article) notFound();
 
   return (
     <ContentDetail
-      backHref="/faydalar"
+      backHref={FAYDALAR_PATH}
       backLabel="Faydalara Dön"
       title={article.title}
       imageUrl={article.imageUrl}

@@ -5,7 +5,7 @@ import { createArticle } from "../../actions";
 export default function AddArticlePage() {
   return (
     <AdminForm
-      title="Yeni Fayda Ekle"
+      title="Yeni Makale Ekle"
       action={createArticle}
       submitLabel="Kaydet"
     >
